@@ -1,5 +1,4 @@
-using System.Security.AccessControl;
-using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+
 
 namespace ShowDoMilhao
 {
@@ -11,7 +10,8 @@ namespace ShowDoMilhao
         public string Resposta3;
         public string Resposta4;
         public string Resposta5;
-        public string RespostaCerta;
+        public int RespostaCerta;
+
         public int  Nivel;
         private Label labelPergunta;
         private Button btResposta01;
@@ -19,7 +19,22 @@ namespace ShowDoMilhao
         private Button btResposta03;
         private Button btResposta04;
         private Button btResposta05;
-
+        private Button QualBtn (int rr)
+        {
+            if (rr ==1)
+                return btResposta01;
+                else if (rr ==2)
+                return btResposta02;
+                else if (rr ==3)
+                return btResposta03;
+                  else if (rr ==4)
+                return btResposta04;
+                  else if (rr ==5)
+                return btResposta05;
+                else
+                return null;
+               
+        }
        
         public questao ()
         {
@@ -28,11 +43,11 @@ namespace ShowDoMilhao
         public void desenhar ()
         {
             labelPergunta.Text=Pergunta;
-            btResposta01.Text= Resposta1
-            btResposta02.Text= Resposta2
-            btResposta03.Text= Resposta3
-            btResposta04.Text= Resposta4
-            btResposta05.Text= Resposta5
+            btResposta01.Text= Resposta1;
+            btResposta02.Text= Resposta2;
+            btResposta03.Text= Resposta3;
+            btResposta04.Text= Resposta4;
+            btResposta05.Text= Resposta5;
 
         }
         public questao (Label LP, Button bt01,Button bt02,Button bt03,Button bt04,Button bt05)
@@ -55,21 +70,22 @@ namespace ShowDoMilhao
             btResposta05=bt05;
         
         }
-        public bool VerificaResposta(int respondido)
+        public bool VerificaResposta(int Respondido)
         {
-            if (respondido == RespostaCerta)
+            if (Respondido == RespostaCerta)
             {
-                var BTN =Qual BTN (RR);
-                    BTN. BackgroundColor= Colors.Green;
-            }
+                var Btn =QualBtn (Respondido);
+                    Btn.BackgroundColor= Colors.Green;
             return true;
-            {
+            }
                 else
-            }
-            ReturnFalse;
-            {
-                
-            }
+           {
+            var BtnCorreto = QualBtn (RespostaCerta);
+            var BtnIncorreto = QualBtn (Respondido);
+            BtnCorreto.BackgroundColor = Colors.Yellow;
+            BtnIncorreto.BackgroundColor= Colors.Purple;
+            return false; 
+           }
         }
     }
 }
