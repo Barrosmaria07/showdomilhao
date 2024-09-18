@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShowDoMilhao.Jogopage">
+
+        <Grid>
+           <Grid.RowDefinitions>
+           <RowDefinition Height= "150"/>
+           <RowDefinition Height= "*"/>
+           <RowDefinition Height= "*"/>
+           <RowDefinition Height= "*"/>
+           <RowDefinition Height= "*"/>
+           <RowDefinition Height= "*"/>
+           <RowDefinition Height= "*"/>
+           <RowDefinition Height= "*"/>
+           </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+             <Image Source="jogoinincio.png"
+                Aspect="AspectFill"
+                Grid.RowSpan="8"
+                Grid.ColumnSpan="3"/>
+
+        <Label Text="pergunta"
+                Margin="5"
+                TextColor="Black"
+                FontSize="12"
+                Grid.Row="1"
+                Grid.ColumnSpan="3" />
+
+              <Button Text="Alternativa A"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="purple"
+                    TextColor="White"
+                    FontSize="19"/>
+
+                    <Button Text="Alternativa B"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="3"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="purple"
+                    TextColor="Black"
+                    FontSize="19"/>
+
+                    <Button Text="Alternativa C"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="4"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="purple"
+                    TextColor="Black"
+                    FontSize="19"/>
+
+                     <Button Text="Alternativa D"
+                     Grid.ColumnSpan="3"
+                    Grid.Row="5"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="purple"
+                    TextColor="Black"
+                    FontSize="19"/>
+
+                     <Button Text="Alternativa E"
+                     Grid.ColumnSpan="3"
+                    Grid.Row="6"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="purple"
+                    TextColor="Black"
+                    FontSize="19"/>
+
+                     <Button Text="Cartas"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="#9feb98"
+                    TextColor="Black"
+                    FontSize="19"/>
+                    
+                     <Button Text="Retirar 1 errado"
+                    Grid.Row="7"
+                    Grid.Column="1"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="#9feb98"
+                    TextColor="Black"
+                    FontSize="19"/>
+                    
+                     <Button Text="Ajuda"
+                    Grid.Row="7"
+                    Grid.Column="2"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="30"
+                    BackgroundColor="#9feb98"
+                    TextColor="Black"
+                    FontSize="19"/>
+
+                    
+
+                    
+
+
+
+
+    </Grid>
+</ContentPage>
