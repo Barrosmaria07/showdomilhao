@@ -20,9 +20,10 @@
                     <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-             <Image Source="jogoinincio.png"
+             <Image Source="jogo.png"
                 Aspect="AspectFill"
                 Grid.RowSpan="8"
+                BackgroundColor="Green"
                 Grid.ColumnSpan="3"/>
 
         <Label Text="pergunta"
@@ -40,6 +41,7 @@
                     CornerRadius="30"
                     BackgroundColor="purple"
                     TextColor="White"
+                    Margin="0, 10, 0, 10"
                     FontSize="19"/>
 
                     <Button Text="Alternativa B"
