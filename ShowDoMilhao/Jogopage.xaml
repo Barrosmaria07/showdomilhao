@@ -6,7 +6,7 @@
         <Grid>
            <Grid.RowDefinitions>
            <RowDefinition Height= "150"/>
-           <RowDefinition Height= "*"/>
+           <RowDefinition Height= "350"/>
            <RowDefinition Height= "*"/>
            <RowDefinition Height= "*"/>
            <RowDefinition Height= "*"/>
@@ -27,8 +27,8 @@
                 Grid.ColumnSpan="3"/>
 
         <Label Text="pergunta"
-                Margin="5"
-                TextColor="Black"
+                Margin="0,160"
+                TextColor="White"
                 FontSize="12"
                 Grid.Row="1"
                 Grid.ColumnSpan="3" />
@@ -38,7 +38,7 @@
                     Grid.ColumnSpan="3"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="purple"
                     TextColor="White"
                     Margin="0, 10, 0, 10"
@@ -49,9 +49,10 @@
                     Grid.Row="3"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="purple"
-                    TextColor="Black"
+                    TextColor="White"
+                    Margin="0, 10, 0, 10"
                     FontSize="19"/>
 
                     <Button Text="Alternativa C"
@@ -59,9 +60,10 @@
                     Grid.Row="4"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="purple"
-                    TextColor="Black"
+                    TextColor="White"
+                    Margin="0, 10, 0, 10"
                     FontSize="19"/>
 
                      <Button Text="Alternativa D"
@@ -69,9 +71,10 @@
                     Grid.Row="5"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="purple"
-                    TextColor="Black"
+                    TextColor="White"
+                    Margin="0, 10, 0, 10"
                     FontSize="19"/>
 
                      <Button Text="Alternativa E"
@@ -79,9 +82,10 @@
                     Grid.Row="6"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="purple"
-                    TextColor="Black"
+                    TextColor="White"
+                    Margin="0, 10, 0, 10"
                     FontSize="19"/>
 
                      <Button Text="Cartas"
@@ -89,30 +93,33 @@
                     Grid.Column="0"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
-                    FontSize="19"/>
+                    Margin="0, 10, 0, 10"
+                    FontSize="15"/>
                     
                      <Button Text="Retirar 1 errado"
                     Grid.Row="7"
                     Grid.Column="1"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
-                    FontSize="19"/>
+                    Margin="0, 10, 0, 10"
+                    FontSize="15"/>
                     
                      <Button Text="Ajuda"
                     Grid.Row="7"
                     Grid.Column="2"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
-                    FontSize="19"/>
+                    Margin="0, 10, 0, 10"
+                    FontSize="15"/>
 
                     
 

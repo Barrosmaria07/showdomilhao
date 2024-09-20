@@ -40,7 +40,7 @@ namespace ShowDoMilhao
         {
 
         }
-        public void desenhar ()
+        public void Desenhar ()
         {
             labelPergunta.Text=Pergunta;
             btResposta01.Text= Resposta1;
