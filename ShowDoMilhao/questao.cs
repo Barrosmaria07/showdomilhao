@@ -2,7 +2,7 @@
 
 namespace ShowDoMilhao
 {
-    public class questao
+    public class Questao
     {
         public string Pergunta;
         public string Resposta1;
@@ -36,7 +36,7 @@ namespace ShowDoMilhao
                
         }
        
-        public questao ()
+        public Questao ()
         {
 
         }
@@ -49,8 +49,19 @@ namespace ShowDoMilhao
             btResposta04.Text= Resposta4;
             btResposta05.Text= Resposta5;
 
+            btResposta01!.BackgroundColor = Colors.DarkBlue;
+            btResposta01!.TextColor       = Colors.White;
+            btResposta02!.BackgroundColor = Colors.DarkBlue;
+            btResposta02!.TextColor       = Colors.White;
+            btResposta03!.BackgroundColor = Colors.DarkBlue;
+            btResposta03!.TextColor       = Colors.White;
+            btResposta04!.BackgroundColor = Colors.DarkBlue;
+            btResposta04!.TextColor       = Colors.White;
+            btResposta05!.BackgroundColor = Colors.DarkBlue;
+            btResposta05!.TextColor       = Colors.White; 
+
         }
-        public questao (Label LP, Button bt01,Button bt02,Button bt03,Button bt04,Button bt05)
+        public Questao (Label LP, Button bt01,Button bt02,Button bt03,Button bt04,Button bt05)
         {
             labelPergunta=LP;
             btResposta01=bt01;
@@ -60,7 +71,7 @@ namespace ShowDoMilhao
             btResposta05=bt05; 
 
         }
-  public void estruturadedesenho (Label LP, Button bt01,Button bt02,Button bt03,Button bt04,Button bt05)
+  public void Estruturadedesenho (Label LP, Button bt01,Button bt02,Button bt03,Button bt04,Button bt05)
         {
             labelPergunta=LP;
             btResposta01=bt01;
@@ -76,15 +87,15 @@ namespace ShowDoMilhao
             {
                 var Btn =QualBtn (Respondido);
                     Btn.BackgroundColor= Colors.Green;
-            return true;
+                    return true;
             }
                 else
            {
             var BtnCorreto = QualBtn (RespostaCerta);
             var BtnIncorreto = QualBtn (Respondido);
-            BtnCorreto.BackgroundColor = Colors.Yellow;
-            BtnIncorreto.BackgroundColor= Colors.Purple;
-            return false; 
+                BtnCorreto.BackgroundColor = Colors.Yellow;
+                BtnIncorreto.BackgroundColor= Colors.Purple;
+                return false; 
            }
         }
     }

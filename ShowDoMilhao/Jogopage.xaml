@@ -6,7 +6,8 @@
         <Grid>
            <Grid.RowDefinitions>
            <RowDefinition Height= "150"/>
-           <RowDefinition Height= "350"/>
+           <RowDefinition Height= "50"/>
+           <RowDefinition Height= "120"/>
            <RowDefinition Height= "*"/>
            <RowDefinition Height= "*"/>
            <RowDefinition Height= "*"/>
@@ -22,103 +23,124 @@
 
              <Image Source="jogo.png"
                 Aspect="AspectFill"
-                Grid.RowSpan="8"
+                Grid.RowSpan="9"
                 BackgroundColor="Green"
                 Grid.ColumnSpan="3"/>
 
-        <Label Text="pergunta"
-                Margin="0,160"
+        <Label x:Name="labelPergunta"
+                VerticalOptions="End"
+                TextColor="White"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Grid.Row="2"
+                Grid.ColumnSpan="3" />
+        
+        <Label x:Name="labelPontuacao"
                 TextColor="White"
                 FontSize="12"
-                Grid.Row="1"
-                Grid.ColumnSpan="3" />
+                Grid.Row="0"
+                Grid.ColumnSpan="2" />
 
-              <Button Text="Alternativa A"
-                    Grid.Row="2"
-                    Grid.ColumnSpan="3"
-                    BorderColor="White"
-                    BorderWidth="1"
-                    CornerRadius="50"
-                    BackgroundColor="purple"
-                    TextColor="White"
-                    Margin="0, 10, 0, 10"
-                    FontSize="19"/>
+        <Label x:Name="labelNivel"
+                Text="Nivel: 1"
+                TextColor="White"
+                FontSize="12"
+                Grid.Row="0"
+                Grid.Column="12" />
 
-                    <Button Text="Alternativa B"
-                    Grid.ColumnSpan="3"
+              <Button x:Name="btResposta01"
+                    Clicked="OnBtnResposta01Clicked"
                     Grid.Row="3"
+                    Margin="5,5,5,5"
+                    Grid.ColumnSpan="3"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="50"
+                    CornerRadius="20"
                     BackgroundColor="purple"
                     TextColor="White"
-                    Margin="0, 10, 0, 10"
                     FontSize="19"/>
 
-                    <Button Text="Alternativa C"
+                    <Button x:Name="btResposta02"
+                    Clicked="OnBtnResposta02Clicked"
+                    Margin="5,5,5,5"
                     Grid.ColumnSpan="3"
                     Grid.Row="4"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="50"
+                    CornerRadius="20"
                     BackgroundColor="purple"
                     TextColor="White"
-                    Margin="0, 10, 0, 10"
                     FontSize="19"/>
 
-                     <Button Text="Alternativa D"
-                     Grid.ColumnSpan="3"
+                    <Button x:Name="btResposta03"
+                    Clicked="OnBtnResposta03Clicked"
+                    Margin="5,5,5,5"
+                    Grid.ColumnSpan="3"
                     Grid.Row="5"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="50"
+                    CornerRadius="20"
                     BackgroundColor="purple"
                     TextColor="White"
-                    Margin="0, 10, 0, 10"
+                 
                     FontSize="19"/>
-
-                     <Button Text="Alternativa E"
+                   <Button x:Name="btResposta04"
+                   Clicked="OnBtnResposta04Clicked"
                      Grid.ColumnSpan="3"
                     Grid.Row="6"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="50"
+                    Margin="5,5,5,5"
+                    CornerRadius="20"
                     BackgroundColor="purple"
                     TextColor="White"
-                    Margin="0, 10, 0, 10"
+                    FontSize="19"/>
+
+                <Button x:Name="btResposta05"
+                Clicked="OnBtnResposta05Clicked"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="7"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    Margin="5,5,5,5"
+                    CornerRadius="20"
+                    BackgroundColor="purple"
+                    TextColor="White"
                     FontSize="19"/>
 
                      <Button Text="Cartas"
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Grid.Column="0"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="50"
+                    Margin="5,5,5,5"
+                    CornerRadius="20"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
-                    Margin="0, 10, 0, 10"
+
                     FontSize="15"/>
                     
                      <Button Text="Retirar 1 errado"
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Grid.Column="1"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="50"
+                    Margin="5,5,5,5"
+                    CornerRadius="20"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
-                    Margin="0, 10, 0, 10"
+
                     FontSize="15"/>
                     
                      <Button Text="Ajuda"
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Grid.Column="2"
                     BorderColor="White"
                     BorderWidth="1"
-                    CornerRadius="50"
+                    CornerRadius="20"
+                    Margin="5,5,5,5"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
-                    Margin="0, 10, 0, 10"
                     FontSize="15"/>
 
                     

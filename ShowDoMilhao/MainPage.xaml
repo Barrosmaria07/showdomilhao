@@ -10,7 +10,7 @@
            <RowDefinition Height= "30"/>
            </Grid.RowDefinitions>
 
-             <Image Source="jogo.png"
+             <Image Source="jogoinicio.png"
                 Aspect="AspectFill"
                 Grid.RowSpan="3"/>
 
