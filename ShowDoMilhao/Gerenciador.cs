@@ -3,8 +3,8 @@ using ShowDoMilhao;
 namespace Showdomilhao;
 public class Gerenciador
 {
-  List<Questao> ListaQuestoes = new List<Questao>();
-  List<int> ListaQuestoesRespondidas = new List<int>();
+  List<Questao> ListaTodasQuestoes = new List<Questao>();
+  List<Questao> ListTodasQuestoesRespondidas = new List<Questoes>();
   Questao QuestaoCorrente;
   public int pontuacao {get; private set;}
   int NivelAtual = 0;
@@ -45,13 +45,10 @@ public class Gerenciador
 
   void ProximaQuestao()
   {
-    var numAleat = Random.Shared.Next(0, ListaQuestoes.Count);
-    while (ListaQuestoesRespondidas.Contains(numAleat))
-      numAleat = Random.Shared.Next(0, ListaQuestoes.Count);
-
-    ListaQuestoesRespondidas.Add(numAleat);
-    QuestaoCorrente = ListaQuestoes [numAleat];
-    QuestaoCorrente.Desenhar();
+    var listaQuestoes= ListaTodasQuestoes.Where(d=>.Nivel==NivelCorrente).ToList();
+    var numRand=Random.Shared.Next (0,listaQuestoes.Count-1);
+    var novaQuestao=listaQuestoes[numRand];
+    while (ListaTodasQuestoesRespondidas.Contains(novaQuestao))
   }
   void AdicionaPontuacao(int n)
     {
@@ -96,7 +93,7 @@ public class Gerenciador
     Q1.Resposta4 = "1";
     Q1.Resposta5 = "5";
     Q1.RespostaCerta = 3;
-    ListaQuestoes.Add(Q1);
+    ListaTodasQuestoes.Add(Q1);
 
     var Q2 = new Questao();
     Q2.Nivel = 1;
@@ -108,7 +105,7 @@ public class Gerenciador
     Q2.Resposta4 = "Madri";
     Q2.Resposta5 = "Roma";
     Q2.RespostaCerta = 1;
-    ListaQuestoes.Add(Q2);
+    ListaTodasQuestoes.Add(Q2);
 
     // Pergunta 3
     var Q3 = new Questao();
@@ -121,7 +118,7 @@ public class Gerenciador
     Q3.Resposta4 = "Saturno";
     Q3.Resposta5 = "Netuno";
     Q3.RespostaCerta = 3;
-    ListaQuestoes.Add(Q3);
+    ListaTodasQuestoes.Add(Q3);
 
     // Pergunta 4
     var Q4 = new Questao();
@@ -134,7 +131,7 @@ public class Gerenciador
     Q4.Resposta4 = "8";
     Q4.Resposta5 = "4";
     Q4.RespostaCerta = 2;
-    ListaQuestoes.Add(Q4);
+    ListaTodasQuestoes.Add(Q4);
 
     // Pergunta 5
     var Q5 = new Questao();
@@ -147,7 +144,7 @@ public class Gerenciador
     Q5.Resposta4 = "Clarice Lispector";
     Q5.Resposta5 = "Graciliano Ramos";
     Q5.RespostaCerta = 1;
-    ListaQuestoes.Add(Q5);
+    ListaTodasQuestoes.Add(Q5);
 
     // Pergunta 6
     var Q6 = new Questao();
@@ -160,7 +157,7 @@ public class Gerenciador
     Q6.Resposta4 = "Pb";
     Q6.Resposta5 = "Hg";
     Q6.RespostaCerta = 1;
-    ListaQuestoes.Add(Q6);
+    ListaTodasQuestoes.Add(Q6);
 
     // Pergunta 7
     var Q7 = new Questao();
@@ -173,7 +170,7 @@ public class Gerenciador
     Q7.Resposta4 = "H2";
     Q7.Resposta5 = "NaCl";
     Q7.RespostaCerta = 1;
-    ListaQuestoes.Add(Q7);
+    ListaTodasQuestoes.Add(Q7);
 
     // Pergunta 8
     var Q8 = new Questao();
@@ -186,7 +183,7 @@ public class Gerenciador
     Q8.Resposta4 = "20";
     Q8.Resposta5 = "25";
     Q8.RespostaCerta = 2;
-    ListaQuestoes.Add(Q8);
+    ListaTodasQuestoes.Add(Q8);
 
     // Pergunta 9
     var Q9 = new Questao();
@@ -199,7 +196,7 @@ public class Gerenciador
     Q9.Resposta4 = "Nitrogênio";
     Q9.Resposta5 = "Hélio";
     Q9.RespostaCerta = 2;
-    ListaQuestoes.Add(Q9);
+    ListaTodasQuestoes.Add(Q9);
 
     // Pergunta 10
     var Q10 = new Questao();
@@ -212,7 +209,7 @@ public class Gerenciador
     Q10.Resposta4 = "Claude Monet";
     Q10.Resposta5 = "Michelangelo";
     Q10.RespostaCerta = 3;
-    ListaQuestoes.Add(Q10);
+    ListaTodasQuestoes.Add(Q10);
 
     // Pergunta 11
 var Q11 = new Questao();
@@ -225,7 +222,7 @@ Q11.Resposta3 = "12"; // Resposta correta
 Q11.Resposta4 = "14";
 Q11.Resposta5 = "15";
 Q11.RespostaCerta = 3;
-ListaQuestoes.Add(Q11);
+ListaTodasQuestoes.Add(Q11);
 
 // Pergunta 12
 var Q12 = new Questao();
@@ -238,7 +235,7 @@ Q12.Resposta3 = "F = m * g";
 Q12.Resposta4 = "F = m * v";
 Q12.Resposta5 = "F = G * m";
 Q12.RespostaCerta = 2;
-ListaQuestoes.Add(Q12);
+ListaTodasQuestoes.Add(Q12);
 
 // Pergunta 13
 var Q13 = new Questao();
@@ -251,7 +248,7 @@ Q13.Resposta3 = "Galileu Galilei";
 Q13.Resposta4 = "Niels Bohr";
 Q13.Resposta5 = "Stephen Hawking";
 Q13.RespostaCerta = 2;
-ListaQuestoes.Add(Q13);
+ListaTodasQuestoes.Add(Q13);
 
 // Pergunta 14
 var Q14 = new Questao();
@@ -264,7 +261,7 @@ Q14.Resposta3 = "Hipopótamo";
 Q14.Resposta4 = "Urso-polar";
 Q14.Resposta5 = "Rinoceronte";
 Q14.RespostaCerta = 1;
-ListaQuestoes.Add(Q14);
+ListaTodasQuestoes.Add(Q14);
 
 // Pergunta 15
 var Q15 = new Questao();
@@ -277,7 +274,7 @@ Q15.Resposta3 = "Tóquio"; // Resposta correta
 Q15.Resposta4 = "Bangkok";
 Q15.Resposta5 = "Hanoi";
 Q15.RespostaCerta = 3;
-ListaQuestoes.Add(Q15);
+ListaTodasQuestoes.Add(Q15);
 
 // Pergunta 16
 var Q16 = new Questao();
@@ -290,7 +287,7 @@ Q16.Resposta3 = "300.000 km";
 Q16.Resposta4 = "250.000 km";
 Q16.Resposta5 = "450.000 km";
 Q16.RespostaCerta = 1;
-ListaQuestoes.Add(Q16);
+ListaTodasQuestoes.Add(Q16);
 
 // Pergunta 17
 var Q17 = new Questao();
@@ -303,7 +300,7 @@ Q17.Resposta3 = "Produzir proteínas";
 Q17.Resposta4 = "Reproduzir células";
 Q17.Resposta5 = "Proteger a célula";
 Q17.RespostaCerta = 1;
-ListaQuestoes.Add(Q17);
+ListaTodasQuestoes.Add(Q17);
 
 // Pergunta 18
 var Q18 = new Questao();
@@ -316,7 +313,7 @@ Q18.Resposta3 = "Leonardo da Vinci";
 Q18.Resposta4 = "Caravaggio";
 Q18.Resposta5 = "Botticelli";
 Q18.RespostaCerta = 2;
-ListaQuestoes.Add(Q18);
+ListaTodasQuestoes.Add(Q18);
 
 // Pergunta 19
 var Q19 = new Questao();
@@ -329,7 +326,7 @@ Q19.Resposta3 = "Euro"; // Resposta correta
 Q19.Resposta4 = "Franco";
 Q19.Resposta5 = "Yen";
 Q19.RespostaCerta = 3;
-ListaQuestoes.Add(Q19);
+ListaTodasQuestoes.Add(Q19);
 
 // Pergunta 20
 var Q20 = new Questao();
@@ -342,7 +339,7 @@ Q20.Resposta3 = "NaOH";
 Q20.Resposta4 = "CH3COOH";
 Q20.Resposta5 = "NH3";
 Q20.RespostaCerta = 1;
-ListaQuestoes.Add(Q20);
+ListaTodasQuestoes.Add(Q20);
 
 // Pergunta 21
 var Q21 = new Questao();
@@ -355,7 +352,7 @@ Q21.Resposta3 = "E = hf";
 Q21.Resposta4 = "P = IV";
 Q21.Resposta5 = "V = IR";
 Q21.RespostaCerta = 1;
-ListaQuestoes.Add(Q21);
+ListaTodasQuestoes.Add(Q21);
 
 // Pergunta 22
 var Q22 = new Questao();
@@ -368,7 +365,7 @@ Q22.Resposta3 = "Albert Einstein";
 Q22.Resposta4 = "Galileu Galilei";
 Q22.Resposta5 = "Louis Pasteur";
 Q22.RespostaCerta = 2;
-ListaQuestoes.Add(Q22);
+ListaTodasQuestoes.Add(Q22);
 
 // Pergunta 23
 var Q23 = new Questao();
@@ -381,7 +378,7 @@ Q23.Resposta3 = "Oxigênio";
 Q23.Resposta4 = "Nitrogênio";
 Q23.Resposta5 = "Hélio";
 Q23.RespostaCerta = 1;
-ListaQuestoes.Add(Q23);
+ListaTodasQuestoes.Add(Q23);
 
 // Pergunta 24
 var Q24 = new Questao();
@@ -394,7 +391,7 @@ Q24.Resposta3 = "Pascal";
 Q24.Resposta4 = "Watt";
 Q24.Resposta5 = "Coulomb";
 Q24.RespostaCerta = 2;
-ListaQuestoes.Add(Q24);
+ListaTodasQuestoes.Add(Q24);
 
 // Pergunta 25
 var Q25 = new Questao();
@@ -407,7 +404,7 @@ Q25.Resposta3 = "Copenhague";
 Q25.Resposta4 = "Estocolmo";
 Q25.Resposta5 = "Helsinque";
 Q25.RespostaCerta = 1;
-ListaQuestoes.Add(Q25);
+ListaTodasQuestoes.Add(Q25);
 
 // Pergunta 26
 var Q26 = new Questao();
@@ -420,7 +417,7 @@ Q26.Resposta3 = "Jane Goodall";
 Q26.Resposta4 = "Ada Lovelace";
 Q26.Resposta5 = "Barbara McClintock";
 Q26.RespostaCerta = 1;
-ListaQuestoes.Add(Q26);
+ListaTodasQuestoes.Add(Q26);
 
 // Pergunta 27
 var Q27 = new Questao();
@@ -433,7 +430,7 @@ Q27.Resposta3 = "Carboidratos";
 Q27.Resposta4 = "Lipídios";
 Q27.Resposta5 = "Ácidos graxos";
 Q27.RespostaCerta = 1;
-ListaQuestoes.Add(Q27);
+ListaTodasQuestoes.Add(Q27);
 
 // Pergunta 28
 var Q28 = new Questao();
@@ -446,7 +443,7 @@ Q28.Resposta3 = "Saara";
 Q28.Resposta4 = "Gobi";
 Q28.Resposta5 = "Kalahari";
 Q28.RespostaCerta = 2;
-ListaQuestoes.Add(Q28);
+ListaTodasQuestoes.Add(Q28);
 
 // Pergunta 29
 var Q29 = new Questao();
@@ -459,7 +456,7 @@ Q29.Resposta3 = "Nêutrons";
 Q29.Resposta4 = "Fótons";
 Q29.Resposta5 = "Neutrinos";
 Q29.RespostaCerta = 2;
-ListaQuestoes.Add(Q29);
+ListaTodasQuestoes.Add(Q29);
 
 // Pergunta 30
 var Q30 = new Questao();
@@ -472,7 +469,7 @@ Q30.Resposta3 = "Macbeth";
 Q30.Resposta4 = "Sonetos";
 Q30.Resposta5 = "A Tempestade";
 Q30.RespostaCerta = 1;
-ListaQuestoes.Add(Q30);
+ListaTodasQuestoes.Add(Q30);
 
 // Pergunta 31
 var Q31 = new Questao();
@@ -485,7 +482,7 @@ Q31.Resposta3 = "d = at^2";
 Q31.Resposta4 = "d = 1/2at^2";
 Q31.Resposta5 = "d = vt^2";
 Q31.RespostaCerta = 1;
-ListaQuestoes.Add(Q31);
+ListaTodasQuestoes.Add(Q31);
 
 // Pergunta 32
 var Q32 = new Questao();
@@ -498,7 +495,7 @@ Q32.Resposta3 = "Efeito da Luz";
 Q32.Resposta4 = "Efeito Quântico";
 Q32.Resposta5 = "Efeito Newtoniano";
 Q32.RespostaCerta = 2;
-ListaQuestoes.Add(Q32);
+ListaTodasQuestoes.Add(Q32);
 
 // Pergunta 33
 var Q33 = new Questao();
@@ -511,7 +508,7 @@ Q33.Resposta3 = "Armazenar energia";
 Q33.Resposta4 = "Respirar";
 Q33.Resposta5 = "Produzir bile";
 Q33.RespostaCerta = 1;
-ListaQuestoes.Add(Q33);
+ListaTodasQuestoes.Add(Q33);
 
 // Pergunta 34
 var Q34 = new Questao();
@@ -524,7 +521,7 @@ Q34.Resposta3 = "Georges Lemaître"; // Resposta correta
 Q34.Resposta4 = "Niels Bohr";
 Q34.Resposta5 = "Isaac Newton";
 Q34.RespostaCerta = 3;
-ListaQuestoes.Add(Q34);
+ListaTodasQuestoes.Add(Q34);
 
 // Pergunta 35
 var Q35 = new Questao();
@@ -537,7 +534,7 @@ Q35.Resposta3 = "Melbourne";
 Q35.Resposta4 = "Brisbane";
 Q35.Resposta5 = "Perth";
 Q35.RespostaCerta = 2;
-ListaQuestoes.Add(Q35);
+ListaTodasQuestoes.Add(Q35);
 
 // Pergunta 36
 var Q36 = new Questao();
@@ -550,7 +547,7 @@ Q36.Resposta3 = "500.000 km/s";
 Q36.Resposta4 = "1.000.000 km/s";
 Q36.Resposta5 = "250.000 km/s";
 Q36.RespostaCerta = 1;
-ListaQuestoes.Add(Q36);
+ListaTodasQuestoes.Add(Q36);
 
 // Pergunta 37
 var Q37 = new Questao();
@@ -563,7 +560,7 @@ Q37.Resposta3 = "Noradrenalina";
 Q37.Resposta4 = "Acetilcolina";
 Q37.Resposta5 = "Glutamato";
 Q37.RespostaCerta = 2;
-ListaQuestoes.Add(Q37);
+ListaTodasQuestoes.Add(Q37);
 
 // Pergunta 38
 var Q38 = new Questao();
@@ -576,7 +573,7 @@ Q38.Resposta3 = "Mercúrio"; // Resposta correta
 Q38.Resposta4 = "Marte";
 Q38.Resposta5 = "Júpiter";
 Q38.RespostaCerta = 3;
-ListaQuestoes.Add(Q38);
+ListaTodasQuestoes.Add(Q38);
 
 // Pergunta 39
 var Q39 = new Questao();
@@ -589,7 +586,7 @@ Q39.Resposta3 = "Energia Eólica";
 Q39.Resposta4 = "Energia Hidráulica";
 Q39.Resposta5 = "Energia Nuclear";
 Q39.RespostaCerta = 2;
-ListaQuestoes.Add(Q39);
+ListaTodasQuestoes.Add(Q39);
 
 
 // Pergunta 40
@@ -603,7 +600,7 @@ Q40.Resposta3 = "Estudo das células"; // Resposta correta
 Q40.Resposta4 = "Estudo do comportamento animal";
 Q40.Resposta5 = "Estudo dos ecossistemas";
 Q40.RespostaCerta = 3;
-ListaQuestoes.Add(Q40);
+ListaTodasQuestoes.Add(Q40);
 
 // Pergunta 41
 var Q41 = new Questao();
@@ -616,7 +613,7 @@ Q41.Resposta3 = "Reprodução";
 Q41.Resposta4 = "Desenvolvimento";
 Q41.Resposta5 = "Evolução";
 Q41.RespostaCerta = 1;
-ListaQuestoes.Add(Q41);
+ListaTodasQuestoes.Add(Q41);
 
 // Pergunta 42
 var Q42 = new Questao();
@@ -629,7 +626,7 @@ Q42.Resposta3 = "Alumínio";
 Q42.Resposta4 = "Ouro";
 Q42.Resposta5 = "Prata";
 Q42.RespostaCerta = 2;
-ListaQuestoes.Add(Q42);
+ListaTodasQuestoes.Add(Q42);
 
 // Pergunta 43
 var Q43 = new Questao();
@@ -642,7 +639,7 @@ Q43.Resposta3 = "Jean Piaget";
 Q43.Resposta4 = "B.F. Skinner";
 Q43.Resposta5 = "Wilhelm Wundt";
 Q43.RespostaCerta = 2;
-ListaQuestoes.Add(Q43);
+ListaTodasQuestoes.Add(Q43);
 
 // Pergunta 44
 var Q44 = new Questao();
@@ -655,7 +652,7 @@ Q44.Resposta3 = "Excesso de água";
 Q44.Resposta4 = "Desertificação";
 Q44.Resposta5 = "Acidificação dos oceanos";
 Q44.RespostaCerta = 2;
-ListaQuestoes.Add(Q44);
+ListaTodasQuestoes.Add(Q44);
 
 // Pergunta 45
 var Q45 = new Questao();
@@ -668,7 +665,7 @@ Q45.Resposta3 = "Floresta Boreal";
 Q45.Resposta4 = "Floresta de Taiga";
 Q45.Resposta5 = "Floresta de Savanah";
 Q45.RespostaCerta = 1;
-ListaQuestoes.Add(Q45);
+ListaTodasQuestoes.Add(Q45);
 
 // Pergunta 46
 var Q46 = new Questao();
@@ -681,7 +678,7 @@ Q46.Resposta3 = "Mesosfera";
 Q46.Resposta4 = "Termosfera";
 Q46.Resposta5 = "Exosfera";
 Q46.RespostaCerta = 2;
-ListaQuestoes.Add(Q46);
+ListaTodasQuestoes.Add(Q46);
 
 // Pergunta 47
 var Q47 = new Questao();
@@ -694,7 +691,7 @@ Q47.Resposta3 = "Python";
 Q47.Resposta4 = "JavaScript"; // Resposta correta
 Q47.Resposta5 = "Ruby";
 Q47.RespostaCerta = 4;
-ListaQuestoes.Add(Q47);
+ListaTodasQuestoes.Add(Q47);
 
 // Pergunta 48
 var Q48 = new Questao();
@@ -707,7 +704,7 @@ Q48.Resposta3 = "Pele"; // Resposta correta
 Q48.Resposta4 = "Cérebro";
 Q48.Resposta5 = "Pulmão";
 Q48.RespostaCerta = 3;
-ListaQuestoes.Add(Q48);
+ListaTodasQuestoes.Add(Q48);
 
 // Pergunta 49
 var Q49 = new Questao();
@@ -720,7 +717,7 @@ Q49.Resposta3 = "Joule";
 Q49.Resposta4 = "Newton";
 Q49.Resposta5 = "Watt";
 Q49.RespostaCerta = 1;
-ListaQuestoes.Add(Q49);
+ListaTodasQuestoes.Add(Q49);
 
 // Pergunta 50
 var Q50 = new Questao();
@@ -733,7 +730,7 @@ Q50.Resposta3 = "Teoria das Cordas";
 Q50.Resposta4 = "Teoria do Multiverso";
 Q50.Resposta5 = "Teoria da Evolução";
 Q50.RespostaCerta = 1;
-ListaQuestoes.Add(Q50);
+ListaTodasQuestoes.Add(Q50);
 
 // Pergunta 51
 var Q51 = new Questao();
@@ -746,7 +743,7 @@ Q51.Resposta3 = "Louis Pasteur";
 Q51.Resposta4 = "James Watson";
 Q51.Resposta5 = "Francis Crick";
 Q51.RespostaCerta = 2;
-ListaQuestoes.Add(Q51);
+ListaTodasQuestoes.Add(Q51);
 
 // Pergunta 52
 var Q52 = new Questao();
@@ -759,7 +756,7 @@ Q52.Resposta3 = "Núcleo"; // Resposta correta
 Q52.Resposta4 = "Ribossomo";
 Q52.Resposta5 = "Lisossomo";
 Q52.RespostaCerta = 3;
-ListaQuestoes.Add(Q52);
+ListaTodasQuestoes.Add(Q52);
 
 // Pergunta 53
 var Q53 = new Questao();
@@ -772,7 +769,7 @@ Q53.Resposta3 = "Dióxido de carbono";
 Q53.Resposta4 = "Argônio";
 Q53.Resposta5 = "Hélio";
 Q53.RespostaCerta = 2;
-ListaQuestoes.Add(Q53);
+ListaTodasQuestoes.Add(Q53);
 
 // Pergunta 54
 var Q54 = new Questao();
@@ -785,7 +782,7 @@ Q54.Resposta3 = "Produzir lipídios";
 Q54.Resposta4 = "Armazenar DNA";
 Q54.Resposta5 = "Proteger a célula";
 Q54.RespostaCerta = 2;
-ListaQuestoes.Add(Q54);
+ListaTodasQuestoes.Add(Q54);
 
 // Pergunta 55
 var Q55 = new Questao();
@@ -798,7 +795,7 @@ Q55.Resposta3 = "Kelvin"; // Resposta correta
 Q55.Resposta4 = "Rankine";
 Q55.Resposta5 = "Reaumur";
 Q55.RespostaCerta = 3;
-ListaQuestoes.Add(Q55);
+ListaTodasQuestoes.Add(Q55);
 
 // Pergunta 56
 var Q56 = new Questao();
@@ -811,7 +808,7 @@ Q56.Resposta3 = "Sistema circulatório"; // Resposta correta
 Q56.Resposta4 = "Sistema respiratório";
 Q56.Resposta5 = "Sistema digestivo";
 Q56.RespostaCerta = 3;
-ListaQuestoes.Add(Q56);
+ListaTodasQuestoes.Add(Q56);
 
 // Pergunta 57
 var Q57 = new Questao();
@@ -824,7 +821,7 @@ Q57.Resposta3 = "Adam Smith";
 Q57.Resposta4 = "John Maynard Keynes";
 Q57.Resposta5 = "David Ricardo";
 Q57.RespostaCerta = 1;
-ListaQuestoes.Add(Q57);
+ListaTodasQuestoes.Add(Q57);
 
 // Pergunta 58
 var Q58 = new Questao();
@@ -837,7 +834,7 @@ Q58.Resposta3 = "Teoria da Gravidade";
 Q58.Resposta4 = "Teoria do Big Bang";
 Q58.Resposta5 = "Teoria da Evolução";
 Q58.RespostaCerta = 2;
-ListaQuestoes.Add(Q58);
+ListaTodasQuestoes.Add(Q58);
 
 // Pergunta 59
 var Q59 = new Questao();
@@ -850,7 +847,7 @@ Q59.Resposta3 = "Filtrar impurezas";
 Q59.Resposta4 = "Regular a temperatura";
 Q59.Resposta5 = "Armazenar nutrientes";
 Q59.RespostaCerta = 1;
-ListaQuestoes.Add(Q59);
+ListaTodasQuestoes.Add(Q59);
 
 // Pergunta 60
 var Q60 = new Questao();
@@ -863,7 +860,7 @@ Q60.Resposta3 = "Traquéia";
 Q60.Resposta4 = "Pulmões";
 Q60.Resposta5 = "Diafragma";
 Q60.RespostaCerta = 2;
-ListaQuestoes.Add(Q60);
+ListaTodasQuestoes.Add(Q60);
 
 // Pergunta 61
 var Q61 = new Questao();
@@ -876,7 +873,7 @@ Q61.Resposta3 = "Coulomb";
 Q61.Resposta4 = "Ohm";
 Q61.Resposta5 = "Farad";
 Q61.RespostaCerta = 2;
-ListaQuestoes.Add(Q61);
+ListaTodasQuestoes.Add(Q61);
 
 // Pergunta 62
 var Q62 = new Questao();
@@ -889,7 +886,7 @@ Q62.Resposta3 = "Fotossíntese"; // Resposta correta
 Q62.Resposta4 = "Quimiossíntese";
 Q62.Resposta5 = "Decomposição";
 Q62.RespostaCerta = 3;
-ListaQuestoes.Add(Q62);
+ListaTodasQuestoes.Add(Q62);
 
 // Pergunta 63
 var Q63 = new Questao();
@@ -902,7 +899,7 @@ Q63.Resposta3 = "Buzz Aldrin";
 Q63.Resposta4 = "John Glenn";
 Q63.Resposta5 = "Gus Grissom";
 Q63.RespostaCerta = 1;
-ListaQuestoes.Add(Q63);
+ListaTodasQuestoes.Add(Q63);
 
 // Pergunta 64
 var Q64 = new Questao();
@@ -915,7 +912,7 @@ Q64.Resposta3 = "Tubarão Branco";
 Q64.Resposta4 = "Girafa";
 Q64.Resposta5 = "Ostra";
 Q64.RespostaCerta = 2;
-ListaQuestoes.Add(Q64);
+ListaTodasQuestoes.Add(Q64);
 
 // Pergunta 65
 var Q65 = new Questao();
@@ -928,7 +925,7 @@ Q65.Resposta3 = "Kiev";
 Q65.Resposta4 = "Minsk";
 Q65.Resposta5 = "Astana";
 Q65.RespostaCerta = 1;
-ListaQuestoes.Add(Q65);
+ListaTodasQuestoes.Add(Q65);
 
 // Pergunta 66
 var Q66 = new Questao();
@@ -941,7 +938,7 @@ Q66.Resposta3 = "Oxigênio";
 Q66.Resposta4 = "Nitrogênio";
 Q66.Resposta5 = "Hélio";
 Q66.RespostaCerta = 1;
-ListaQuestoes.Add(Q66);
+ListaTodasQuestoes.Add(Q66);
 
 // Pergunta 67
 var Q67 = new Questao();
@@ -954,7 +951,7 @@ Q67.Resposta3 = "Teoria da Relatividade";
 Q67.Resposta4 = "Teoria Quântica";
 Q67.Resposta5 = "Teoria da Gravidade";
 Q67.RespostaCerta = 1;
-ListaQuestoes.Add(Q67);
+ListaTodasQuestoes.Add(Q67);
 
 // Pergunta 68
 var Q68 = new Questao();
@@ -967,7 +964,7 @@ Q68.Resposta3 = "NaCl";
 Q68.Resposta4 = "O2";
 Q68.Resposta5 = "C6H12O6";
 Q68.RespostaCerta = 1;
-ListaQuestoes.Add(Q68);
+ListaTodasQuestoes.Add(Q68);
 
 // Pergunta 69
 var Q69 = new Questao();
@@ -980,7 +977,7 @@ Q69.Resposta3 = "Floresta Boreal";
 Q69.Resposta4 = "Floresta de Taiga";
 Q69.Resposta5 = "Floresta de Savanah";
 Q69.RespostaCerta = 1;
-ListaQuestoes.Add(Q69);
+ListaTodasQuestoes.Add(Q69);
 
 // Pergunta 70
 var Q70 = new Questao();
@@ -993,7 +990,7 @@ Q70.Resposta3 = "Cobre";
 Q70.Resposta4 = "Ferro";
 Q70.Resposta5 = "Mercúrio";
 Q70.RespostaCerta = 2;
-ListaQuestoes.Add(Q70);
+ListaTodasQuestoes.Add(Q70);
 
 // Pergunta 72
 var Q72 = new Questao();
@@ -1006,7 +1003,7 @@ Q72.Resposta3 = "Saturno";
 Q72.Resposta4 = "Marte";
 Q72.Resposta5 = "Netuno";
 Q72.RespostaCerta = 2;
-ListaQuestoes.Add(Q72);
+ListaTodasQuestoes.Add(Q72);
 
 // Pergunta 73
 var Q73 = new Questao();
@@ -1019,7 +1016,7 @@ Q73.Resposta3 = "Paris"; // Resposta correta
 Q73.Resposta4 = "Lisboa";
 Q73.Resposta5 = "Roma";
 Q73.RespostaCerta = 3;
-ListaQuestoes.Add(Q73);
+ListaTodasQuestoes.Add(Q73);
 
 // Pergunta 74
 var Q74 = new Questao();
@@ -1032,7 +1029,7 @@ Q74.Resposta3 = "Dólar";
 Q74.Resposta4 = "Iene"; // Resposta correta
 Q74.Resposta5 = "Rúpia";
 Q74.RespostaCerta = 4;
-ListaQuestoes.Add(Q74);
+ListaTodasQuestoes.Add(Q74);
 
 // Pergunta 75
 var Q75 = new Questao();
@@ -1045,7 +1042,7 @@ Q75.Resposta3 = "Hélio";
 Q75.Resposta4 = "Nitrogênio"; // Resposta correta
 Q75.Resposta5 = "Argônio";
 Q75.RespostaCerta = 4;
-ListaQuestoes.Add(Q75);
+ListaTodasQuestoes.Add(Q75);
 
 // Pergunta 76
 var Q76 = new Questao();
@@ -1058,7 +1055,7 @@ Q76.Resposta3 = "Fósforo";
 Q76.Resposta4 = "Cálcio";
 Q76.Resposta5 = "Mercúrio";
 Q76.RespostaCerta = 1;
-ListaQuestoes.Add(Q76);
+ListaTodasQuestoes.Add(Q76);
 
 // Pergunta 77
 var Q77 = new Questao();
@@ -1071,7 +1068,7 @@ Q77.Resposta3 = "Europa";
 Q77.Resposta4 = "América";
 Q77.Resposta5 = "Oceania";
 Q77.RespostaCerta = 1;
-ListaQuestoes.Add(Q77);
+ListaTodasQuestoes.Add(Q77);
 
 // Pergunta 78
 var Q78 = new Questao();
@@ -1084,7 +1081,7 @@ Q78.Resposta3 = "Rio Yangtze";
 Q78.Resposta4 = "Rio Mississippi";
 Q78.Resposta5 = "Rio Ganges";
 Q78.RespostaCerta = 1;
-ListaQuestoes.Add(Q78);
+ListaTodasQuestoes.Add(Q78);
 
 // Pergunta 79
 var Q79 = new Questao();
@@ -1097,7 +1094,7 @@ Q79.Resposta3 = "Brasília"; // Resposta correta
 Q79.Resposta4 = "Belo Horizonte";
 Q79.Resposta5 = "Salvador";
 Q79.RespostaCerta = 3;
-ListaQuestoes.Add(Q79);
+ListaTodasQuestoes.Add(Q79);
 
 // Pergunta 80
 var Q80 = new Questao();
@@ -1110,7 +1107,7 @@ Q80.Resposta3 = "CO2";
 Q80.Resposta4 = "NaCl";
 Q80.Resposta5 = "O2";
 Q80.RespostaCerta = 1;
-ListaQuestoes.Add(Q80);
+ListaTodasQuestoes.Add(Q80);
 
 // Pergunta 81
 var Q81 = new Questao();
@@ -1123,7 +1120,7 @@ Q81.Resposta3 = "Jane Goodall";
 Q81.Resposta4 = "Ada Lovelace";
 Q81.Resposta5 = "Lise Meitner";
 Q81.RespostaCerta = 1;
-ListaQuestoes.Add(Q81);
+ListaTodasQuestoes.Add(Q81);
 
 // Pergunta 82
 var Q82 = new Questao();
@@ -1136,7 +1133,7 @@ Q82.Resposta3 = "Teoria da Criacionismo";
 Q82.Resposta4 = "Teoria do Big Bang";
 Q82.Resposta5 = "Teoria das Cordas";
 Q82.RespostaCerta = 1;
-ListaQuestoes.Add(Q82);
+ListaTodasQuestoes.Add(Q82);
 
 // Pergunta 83
 var Q83 = new Questao();
@@ -1149,7 +1146,7 @@ Q83.Resposta3 = "Deserto de Gobi";
 Q83.Resposta4 = "Deserto de Kalahari";
 Q83.Resposta5 = "Deserto de Atacama";
 Q83.RespostaCerta = 2;
-ListaQuestoes.Add(Q83);
+ListaTodasQuestoes.Add(Q83);
 
 // Pergunta 84
 var Q84 = new Questao();
@@ -1162,7 +1159,7 @@ Q84.Resposta3 = "Pele"; // Resposta correta
 Q84.Resposta4 = "Cérebro";
 Q84.Resposta5 = "Pulmão";
 Q84.RespostaCerta = 3;
-ListaQuestoes.Add(Q84);
+ListaTodasQuestoes.Add(Q84);
 
 // Pergunta 85
 var Q85 = new Questao();
@@ -1183,7 +1180,7 @@ Q86.Resposta3 = "Leonardo da Vinci"; // Resposta correta
 Q86.Resposta4 = "Michelangelo";
 Q86.Resposta5 = "Claude Monet";
 Q86.RespostaCerta = 3;
-ListaQuestoes.Add(Q86);
+ListaTodasQuestoes.Add(Q86);
 
 // Pergunta 87
 var Q87 = new Questao();
@@ -1196,7 +1193,7 @@ Q87.Resposta3 = "Melbourne";
 Q87.Resposta4 = "Brisbane";
 Q87.Resposta5 = "Perth";
 Q87.RespostaCerta = 2;
-ListaQuestoes.Add(Q87);
+ListaTodasQuestoes.Add(Q87);
 
 // Pergunta 88
 var Q88 = new Questao();
@@ -1209,7 +1206,7 @@ Q88.Resposta3 = "Alpes";
 Q88.Resposta4 = "Montanhas Rochosas";
 Q88.Resposta5 = "Apalaches";
 Q88.RespostaCerta = 1;
-ListaQuestoes.Add(Q88);
+ListaTodasQuestoes.Add(Q88);
 
 // Pergunta 89
 var Q89 = new Questao();
@@ -1222,7 +1219,7 @@ Q89.Resposta3 = "Guimarães Rosa";
 Q89.Resposta4 = "Clarice Lispector";
 Q89.Resposta5 = "Carlos Drummond de Andrade";
 Q89.RespostaCerta = 2;
-ListaQuestoes.Add(Q89);
+ListaTodasQuestoes.Add(Q89);
 
 // Pergunta 90
 var Q90 = new Questao();
@@ -1235,7 +1232,7 @@ Q90.Resposta3 = "Crosta"; // Resposta correta
 Q90.Resposta4 = "Sial";
 Q90.Resposta5 = "Sima";
 Q90.RespostaCerta = 3;
-ListaQuestoes.Add(Q90);
+ListaTodasQuestoes.Add(Q90);
 
 
 // Pergunta 91
@@ -1249,7 +1246,7 @@ Q91.Resposta3 = "1.000 km/s";
 Q91.Resposta4 = "500.000 km/s";
 Q91.Resposta5 = "200.000 km/s";
 Q91.RespostaCerta = 1;
-ListaQuestoes.Add(Q91);
+ListaTodasQuestoes.Add(Q91);
 
 // Pergunta 92
 var Q92 = new Questao();
@@ -1262,7 +1259,7 @@ Q92.Resposta3 = "PV=nRT";
 Q92.Resposta4 = "a² + b² = c²";
 Q92.Resposta5 = "E=hf";
 Q92.RespostaCerta = 1;
-ListaQuestoes.Add(Q92);
+ListaTodasQuestoes.Add(Q92);
 
 // Pergunta 93
 var Q93 = new Questao();
@@ -1275,7 +1272,7 @@ Q93.Resposta3 = "Elétron"; // Resposta correta
 Q93.Resposta4 = "Méson";
 Q93.Resposta5 = "Bóson";
 Q93.RespostaCerta = 3;
-ListaQuestoes.Add(Q93);
+ListaTodasQuestoes.Add(Q93);
 
 // Pergunta 94
 var Q94 = new Questao();
@@ -1288,7 +1285,7 @@ Q94.Resposta3 = "Teoria da Relatividade";
 Q94.Resposta4 = "Teoria da Gravitação";
 Q94.Resposta5 = "Teoria das Cordas";
 Q94.RespostaCerta = 1;
-ListaQuestoes.Add(Q94);
+ListaTodasQuestoes.Add(Q94);
 
 // Pergunta 95
 var Q95 = new Questao();
@@ -1301,7 +1298,7 @@ Q95.Resposta3 = "Fígado";
 Q95.Resposta4 = "Pulmão";
 Q95.Resposta5 = "Rins";
 Q95.RespostaCerta = 1;
-ListaQuestoes.Add(Q95);
+ListaTodasQuestoes.Add(Q95);
 
 // Pergunta 96
 var Q96 = new Questao();
@@ -1314,7 +1311,7 @@ Q96.Resposta3 = "Pressão atmosférica";
 Q96.Resposta4 = "Temperatura";
 Q96.Resposta5 = "Força";
 Q96.RespostaCerta = 1;
-ListaQuestoes.Add(Q96);
+ListaTodasQuestoes.Add(Q96);
 
 // Pergunta 97
 var Q97 = new Questao();
@@ -1327,7 +1324,7 @@ Q97.Resposta3 = "A Floresta Amazônica";
 Q97.Resposta4 = "O Corpo Humano";
 Q97.Resposta5 = "Uma Sequóia";
 Q97.RespostaCerta = 2;
-ListaQuestoes.Add(Q97);
+ListaTodasQuestoes.Add(Q97);
 
 // Pergunta 98
 var Q98 = new Questao();
@@ -1340,7 +1337,7 @@ Q98.Resposta3 = "Distância*Tempo";
 Q98.Resposta4 = "Distância + Tempo";
 Q98.Resposta5 = "Tempo - Distância";
 Q98.RespostaCerta = 1;
-ListaQuestoes.Add(Q98);
+ListaTodasQuestoes.Add(Q98);
 
 var Q100 = new Questao();
 Q100.Nivel = 10;
@@ -1352,7 +1349,7 @@ Q100.Resposta3 = "Oxigênio";
 Q100.Resposta4 = "Carbono";
 Q100.Resposta5 = "Nitrogênio";
 Q100.RespostaCerta = 1;
-ListaQuestoes.Add(Q100);
+ListaTodasQuestoes.Add(Q100);
 
 
     ProximaQuestao();
