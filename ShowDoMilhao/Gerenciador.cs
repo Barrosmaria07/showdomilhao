@@ -45,10 +45,17 @@ public class Gerenciador
 
   void ProximaQuestao()
   {
-    var listaQuestoes= ListaTodasQuestoes.Where(d=>.Nivel==NivelCorrente).ToList();
+    var listaQuestoes= ListaTodasQuestoes.Where(d=>d.Nivel==NivelAtual).ToList();
     var numRand=Random.Shared.Next (0,listaQuestoes.Count-1);
     var novaQuestao=listaQuestoes[numRand];
-    while (ListaTodasQuestoesRespondidas.Contains(novaQuestao))
+    while (listaTodasQuestoesRespondidas.Contains(novaQuestao))
+    {
+      numRand= Random.Shared.Next (0,listaQuestoes.Count-1);
+      var novaQuestao= listaQuestoes {numRand};
+    }
+    listaTodasQuestoesRespondidas.Add(novaQuestao);
+    QuestaoCorrente=novaQuestao;
+    QuestaoCorrente.Desenhar();
   }
   void AdicionaPontuacao(int n)
     {
