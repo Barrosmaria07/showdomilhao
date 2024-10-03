@@ -1,4 +1,6 @@
-﻿namespace ShowDoMilhao;
+﻿using Showdomilhao;
+
+namespace ShowDoMilhao;
 
 public partial class MainPage : ContentPage
 {
@@ -12,5 +14,6 @@ public partial class MainPage : ContentPage
 	{
 		Application.Current.MainPage= new Jogopage();
 	}
+	
 }
 

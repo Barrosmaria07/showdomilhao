@@ -1,9 +1,16 @@
 
 
-namespace ShowDoMilhao
-{
-    public class Questao
-    {
+namespace ShowDoMilhao;
+
+ public class Questao: IEquatable <Questao>
+        {
+            public bool Equals (Questao q)
+            {
+                return this.Nivel == q.Nivel &&
+                this.Pergunta == q.Pergunta;
+            }
+        
+
         public string Pergunta;
         public string Resposta1;
         public string Resposta2;
@@ -14,23 +21,23 @@ namespace ShowDoMilhao
 
         public int  Nivel;
         private Label labelPergunta;
-        private Button btResposta01;
-        private Button btResposta02;
-        private Button btResposta03;
-        private Button btResposta04;
-        private Button btResposta05;
+        private Button btnresposta01;
+        private Button btnresposta02;
+        private Button btnresposta03;
+        private Button btnresposta04;
+        private Button btnresposta05;
         private Button QualBtn (int rr)
         {
             if (rr ==1)
-                return btResposta01;
+                return btnresposta01;
                 else if (rr ==2)
-                return btResposta02;
+                return btnresposta02;
                 else if (rr ==3)
-                return btResposta03;
+                return btnresposta03;
                   else if (rr ==4)
-                return btResposta04;
+                return btnresposta04;
                   else if (rr ==5)
-                return btResposta05;
+                return btnresposta05;
                 else
                 return null;
                
@@ -40,53 +47,45 @@ namespace ShowDoMilhao
         {
 
         }
-
-        public class Questao: IEquatable <Questao>
-        {
-            public bool Equals (Questao q)
-            {
-                return this.Nivel == q.Nivel;
-            }
-        }
         public void Desenhar ()
         {
             labelPergunta.Text=Pergunta;
-            btResposta01.Text= Resposta1;
-            btResposta02.Text= Resposta2;
-            btResposta03.Text= Resposta3;
-            btResposta04.Text= Resposta4;
-            btResposta05.Text= Resposta5;
+            btnresposta01.Text= Resposta1;
+            btnresposta02.Text= Resposta2;
+            btnresposta03.Text= Resposta3;
+            btnresposta04.Text= Resposta4;
+            btnresposta05.Text= Resposta5;
 
-            btResposta01!.BackgroundColor = Colors.DarkBlue;
-            btResposta01!.TextColor       = Colors.White;
-            btResposta02!.BackgroundColor = Colors.DarkBlue;
-            btResposta02!.TextColor       = Colors.White;
-            btResposta03!.BackgroundColor = Colors.DarkBlue;
-            btResposta03!.TextColor       = Colors.White;
-            btResposta04!.BackgroundColor = Colors.DarkBlue;
-            btResposta04!.TextColor       = Colors.White;
-            btResposta05!.BackgroundColor = Colors.DarkBlue;
-            btResposta05!.TextColor       = Colors.White; 
+            btnresposta01!.BackgroundColor = Colors.DarkBlue;
+            btnresposta01!.TextColor       = Colors.White;
+            btnresposta02!.BackgroundColor = Colors.DarkBlue;
+            btnresposta02!.TextColor       = Colors.White;
+            btnresposta03!.BackgroundColor = Colors.DarkBlue;
+            btnresposta03!.TextColor       = Colors.White;
+            btnresposta04!.BackgroundColor = Colors.DarkBlue;
+            btnresposta04!.TextColor       = Colors.White;
+            btnresposta05!.BackgroundColor = Colors.DarkBlue;
+            btnresposta05!.TextColor       = Colors.White; 
 
         }
         public Questao (Label LP, Button bt01,Button bt02,Button bt03,Button bt04,Button bt05)
         {
             labelPergunta=LP;
-            btResposta01=bt01;
-            btResposta02=bt02;
-            btResposta03=bt03;
-            btResposta04=bt04;
-            btResposta05=bt05; 
+            btnresposta01=bt01;
+            btnresposta02=bt02;
+            btnresposta03=bt03;
+            btnresposta04=bt04;
+            btnresposta05=bt05; 
 
         }
   public void Estruturadedesenho (Label LP, Button bt01,Button bt02,Button bt03,Button bt04,Button bt05)
         {
             labelPergunta=LP;
-            btResposta01=bt01;
-            btResposta02=bt02;
-            btResposta03=bt03;
-            btResposta04=bt04;
-            btResposta05=bt05;
+            btnresposta01=bt01;
+            btnresposta02=bt02;
+            btnresposta03=bt03;
+            btnresposta04=bt04;
+            btnresposta05=bt05;
         
         }
         public bool VerificaResposta(int Respondido)
@@ -106,5 +105,6 @@ namespace ShowDoMilhao
                 return false; 
            }
         }
+        
     }
-}
+

@@ -1,3 +1,4 @@
+namespace ShowDoMilhao;
 public class RetiraErradas:IAjuda
 {
     public override void RealizaAjuda(Questao questao)
@@ -5,29 +6,29 @@ public class RetiraErradas:IAjuda
         switch (questao.RespostaCorreta)
         {
             case 1:
-            btnResp02.IsVisible=false;
-            btnResp03.IsVisible=false;
-            btnResp04.IsVisible=false;
+            btnResposta02.IsVisible=false;
+            btnResposta03.IsVisible=false;
+            btnResposta04.IsVisible=false;
             break;
             case 2:
-            btnResp01.IsVisible=false;
-            btnResp03.IsVisible=false;
-            btnResp05.IsVisible=false;
+            btnResposta01.IsVisible=false;
+            btnResposta03.IsVisible=false;
+            btnResposta05.IsVisible=false;
             break;
            case 3:
-            btnResp02.IsVisible=false;
-            btnResp01.IsVisible=false;
-            btnResp04.IsVisible=false;
+            btnResposta02.IsVisible=false;
+            btnResposta01.IsVisible=false;
+            btnResposta04.IsVisible=false;
             break;
             case 4:
-            btnResp01.IsVisible=false;
-            btnResp03.IsVisible=false;
-            btnResp05.IsVisible=false;
+            btnResposta01.IsVisible=false;
+            btnResposta03.IsVisible=false;
+            btnResposta05.IsVisible=false;
             break; 
             case 5:
-            btnResp01.IsVisible=false;
-            btnResp03.IsVisible=false;
-            btnResp02.IsVisible=false;
+            btnResposta01.IsVisible=false;
+            btnResposta03.IsVisible=false;
+            btnResposta02.IsVisible=false;
             break;           
          
         }

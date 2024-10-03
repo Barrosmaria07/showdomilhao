@@ -2,24 +2,24 @@ using ShowDoMilhao;
 
 public abstract class IAjuda
 {
-        protected Button btnResp01;
-        protected Button btnResp02;
-        protected Button btnResp03;
-        protected Button btnResp04;
-        protected Button btnResp05;
+        protected Button btnResposta01;
+        protected Button btnResposta02;
+        protected Button btnResposta03;
+        protected Button btnResposta04;
+        protected Button btnResposta05;
         protected Frame btnAjuda;
-         public void ConfiguraDesenho (Button btnresp01, Button btnresp02, Button btnresp03, Button btnresp04, Button btnresp05,)
+         public void ConfiguraDesenho (Button btnresposta01, Button btnresposta02, Button btnresposta03, Button btnresposta04, Button btnresposta05)
          {
-            this.btnResp01= btnResp01;
-            this.btnResp02= btnResp02;
-            this.btnResp03= btnResp03;
-            this.btnResp04= btnResp04;
-            this.btnResp05= btnResp05;
+            this.btnResposta01= btnResposta01;
+            this.btnResposta02= btnResposta02;
+            this.btnResposta03= btnResposta03;
+            this.btnResposta04= btnResposta04;
+            this.btnResposta05= btnResposta05;
          }
           public void ConfiguraDesenho (Frame frameAjuda)
           {
             this.frameAjuda= frameAjuda;
         
           }
-          public void  RealizaAjuda (Questao questao);
+          public abstract void  RealizaAjuda (Questao questao);
 }

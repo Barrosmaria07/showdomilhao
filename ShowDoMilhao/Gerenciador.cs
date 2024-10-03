@@ -4,7 +4,7 @@ namespace Showdomilhao;
 public class Gerenciador
 {
   List<Questao> ListaTodasQuestoes = new List<Questao>();
-  List<Questao> ListTodasQuestoesRespondidas = new List<Questoes>();
+  List<Questao> ListTodasQuestoesRespondidas = new List<Questao>();
   Questao QuestaoCorrente;
   public int pontuacao {get; private set;}
   int NivelAtual = 0;
@@ -13,12 +13,19 @@ public class Gerenciador
 
 
 
-  public Gerenciador(Label labelPerg, Button btnResp01, Button btnResp02, Button btnResp03, Button btnResp04, Button btnResp05, Label labelPontuacao, Label labelNivel)
+  public Gerenciador(Label labelPerg, Button btnresposta01, Button btnresposta02, Button btnresposta03, Button btnresposta04, Button btnresposta05, Label labelPontuacao, Label labelNivel)
   {
-    CriaPerguntas(labelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    CriaPerguntas(labelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     this.labelPontuacao = labelPontuacao;
     this.labelNivel = labelNivel;
   }
+
+
+    public Questao GetQuestaoCorrente()
+    {
+      return QuestaoCorrente;
+    }
+
 
    public async void VerificaResposta(int Respondido)
   {
@@ -48,12 +55,12 @@ public class Gerenciador
     var listaQuestoes= ListaTodasQuestoes.Where(d=>d.Nivel==NivelAtual).ToList();
     var numRand=Random.Shared.Next (0,listaQuestoes.Count-1);
     var novaQuestao=listaQuestoes[numRand];
-    while (listaTodasQuestoesRespondidas.Contains(novaQuestao))
+    while (ListaTodasQuestoesRespondidas.Contains(novaQuestao))
     {
       numRand= Random.Shared.Next (0,listaQuestoes.Count-1);
-      var novaQuestao= listaQuestoes {numRand};
+      var novaQuestao= listaQuestoes [numRand];
     }
-    listaTodasQuestoesRespondidas.Add(novaQuestao);
+    ListaTodasQuestoesRespondidas.Add(novaQuestao);
     QuestaoCorrente=novaQuestao;
     QuestaoCorrente.Desenhar();
   }
@@ -88,11 +95,11 @@ public class Gerenciador
         ProximaQuestao();
     }
 
-  async void CriaPerguntas(Label LabelPerg, Button btnResp01, Button btnResp02, Button btnResp03, Button btnResp04, Button btnResp05)
+  async void CriaPerguntas(Label LabelPerg, Button btnresposta01, Button btnresposta02, Button btnresposta03, Button btnresposta04, Button btnresposta05)
   {
     var Q1 = new Questao();
     Q1.Nivel = 1;
-    Q1.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q1.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q1.Pergunta = "Quanto é 2+2?";
     Q1.Resposta1 = "2";
     Q1.Resposta2 = "22";
@@ -104,7 +111,7 @@ public class Gerenciador
 
     var Q2 = new Questao();
     Q2.Nivel = 1;
-    Q2.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q2.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q2.Pergunta = "Qual a capital da França?";
     Q2.Resposta1 = "Paris"; // Resposta correta
     Q2.Resposta2 = "Londres";
@@ -117,7 +124,7 @@ public class Gerenciador
     // Pergunta 3
     var Q3 = new Questao();
     Q3.Nivel = 1;
-    Q3.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q3.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q3.Pergunta = "Qual é o maior planeta do sistema solar?";
     Q3.Resposta1 = "Terra";
     Q3.Resposta2 = "Marte";
@@ -130,7 +137,7 @@ public class Gerenciador
     // Pergunta 4
     var Q4 = new Questao();
     Q4.Nivel = 1;
-    Q4.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q4.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q4.Pergunta = "Quantos continentes existem?";
     Q4.Resposta1 = "5";
     Q4.Resposta2 = "6";
@@ -143,7 +150,7 @@ public class Gerenciador
     // Pergunta 5
     var Q5 = new Questao();
     Q5.Nivel = 1;
-    Q5.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q5.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q5.Pergunta = "Quem escreveu 'Dom Casmurro'?";
     Q5.Resposta1 = "Machado de Assis"; // Resposta correta
     Q5.Resposta2 = "Joaquim Manuel de Macedo";
@@ -156,7 +163,7 @@ public class Gerenciador
     // Pergunta 6
     var Q6 = new Questao();
     Q6.Nivel = 1;
-    Q6.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q6.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q6.Pergunta = "Qual o símbolo químico do ouro?";
     Q6.Resposta1 = "Au"; // Resposta correta
     Q6.Resposta2 = "Ag";
@@ -169,7 +176,7 @@ public class Gerenciador
     // Pergunta 7
     var Q7 = new Questao();
     Q7.Nivel = 1;
-    Q7.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q7.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q7.Pergunta = "Qual a fórmula da água?";
     Q7.Resposta1 = "H2O"; // Resposta correta
     Q7.Resposta2 = "O2";
@@ -182,7 +189,7 @@ public class Gerenciador
     // Pergunta 8
     var Q8 = new Questao();
     Q8.Nivel = 1;
-    Q8.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q8.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q8.Pergunta = "Quantos anos tem uma década?";
     Q8.Resposta1 = "5";
     Q8.Resposta2 = "10"; // Resposta correta
@@ -195,7 +202,7 @@ public class Gerenciador
     // Pergunta 9
     var Q9 = new Questao();
     Q9.Nivel = 1;
-    Q9.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q9.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q9.Pergunta = "Qual é o elemento mais abundante no universo?";
     Q9.Resposta1 = "Oxigênio";
     Q9.Resposta2 = "Hidrogênio"; // Resposta correta
@@ -208,7 +215,7 @@ public class Gerenciador
     // Pergunta 10
     var Q10 = new Questao();
     Q10.Nivel = 1;
-    Q10.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+    Q10.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
     Q10.Pergunta = "Quem pintou a Mona Lisa?";
     Q10.Resposta1 = "Vincent van Gogh";
     Q10.Resposta2 = "Pablo Picasso";
@@ -221,7 +228,7 @@ public class Gerenciador
     // Pergunta 11
 var Q11 = new Questao();
 Q11.Nivel = 2;
-Q11.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q11.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q11.Pergunta = "Qual é a raiz quadrada de 144?";
 Q11.Resposta1 = "10";
 Q11.Resposta2 = "11";
@@ -234,7 +241,7 @@ ListaTodasQuestoes.Add(Q11);
 // Pergunta 12
 var Q12 = new Questao();
 Q12.Nivel = 2;
-Q12.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q12.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q12.Pergunta = "Qual é a fórmula da gravidade?";
 Q12.Resposta1 = "F = m * a";
 Q12.Resposta2 = "F = G * (m1*m2)/r^2"; // Resposta correta
@@ -247,7 +254,7 @@ ListaTodasQuestoes.Add(Q12);
 // Pergunta 13
 var Q13 = new Questao();
 Q13.Nivel = 2;
-Q13.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q13.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q13.Pergunta = "Quem é conhecido como o pai da física moderna?";
 Q13.Resposta1 = "Isaac Newton";
 Q13.Resposta2 = "Albert Einstein"; // Resposta correta
@@ -260,7 +267,7 @@ ListaTodasQuestoes.Add(Q13);
 // Pergunta 14
 var Q14 = new Questao();
 Q14.Nivel = 2;
-Q14.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q14.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q14.Pergunta = "Qual é o maior animal terrestre?";
 Q14.Resposta1 = "Elefante"; // Resposta correta
 Q14.Resposta2 = "Girafa";
@@ -273,7 +280,7 @@ ListaTodasQuestoes.Add(Q14);
 // Pergunta 15
 var Q15 = new Questao();
 Q15.Nivel = 2;
-Q15.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q15.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q15.Pergunta = "Qual é a capital do Japão?";
 Q15.Resposta1 = "Seul";
 Q15.Resposta2 = "Pequim";
@@ -286,7 +293,7 @@ ListaTodasQuestoes.Add(Q15);
 // Pergunta 16
 var Q16 = new Questao();
 Q16.Nivel = 2;
-Q16.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q16.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q16.Pergunta = "Qual é a distância da Terra à Lua?";
 Q16.Resposta1 = "384.400 km"; // Resposta correta
 Q16.Resposta2 = "500.000 km";
@@ -299,7 +306,7 @@ ListaTodasQuestoes.Add(Q16);
 // Pergunta 17
 var Q17 = new Questao();
 Q17.Nivel = 2;
-Q17.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q17.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q17.Pergunta = "Qual a principal função das mitocôndrias?";
 Q17.Resposta1 = "Produzir energia"; // Resposta correta
 Q17.Resposta2 = "Armazenar DNA";
@@ -312,7 +319,7 @@ ListaTodasQuestoes.Add(Q17);
 // Pergunta 18
 var Q18 = new Questao();
 Q18.Nivel = 2;
-Q18.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q18.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q18.Pergunta = "Quem pintou o teto da Capela Sistina?";
 Q18.Resposta1 = "Raphael";
 Q18.Resposta2 = "Michelangelo"; // Resposta correta
@@ -325,7 +332,7 @@ ListaTodasQuestoes.Add(Q18);
 // Pergunta 19
 var Q19 = new Questao();
 Q19.Nivel = 2;
-Q19.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q19.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q19.Pergunta = "Qual é a moeda oficial da União Europeia?";
 Q19.Resposta1 = "Dólar";
 Q19.Resposta2 = "Libra";
@@ -338,7 +345,7 @@ ListaTodasQuestoes.Add(Q19);
 // Pergunta 20
 var Q20 = new Questao();
 Q20.Nivel = 2;
-Q20.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q20.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q20.Pergunta = "Qual é a fórmula química do ácido sulfúrico?";
 Q20.Resposta1 = "H2SO4"; // Resposta correta
 Q20.Resposta2 = "HCl";
@@ -351,7 +358,7 @@ ListaTodasQuestoes.Add(Q20);
 // Pergunta 21
 var Q21 = new Questao();
 Q21.Nivel = 3;
-Q21.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q21.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q21.Pergunta = "Qual é a equação da energia em física?";
 Q21.Resposta1 = "E = mc^2"; // Resposta correta
 Q21.Resposta2 = "F = ma";
@@ -364,7 +371,7 @@ ListaTodasQuestoes.Add(Q21);
 // Pergunta 22
 var Q22 = new Questao();
 Q22.Nivel = 3;
-Q22.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q22.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q22.Pergunta = "Quem desenvolveu a teoria da evolução?";
 Q22.Resposta1 = "Isaac Newton";
 Q22.Resposta2 = "Charles Darwin"; // Resposta correta
@@ -377,7 +384,7 @@ ListaTodasQuestoes.Add(Q22);
 // Pergunta 23
 var Q23 = new Questao();
 Q23.Nivel = 3;
-Q23.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q23.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q23.Pergunta = "Qual é o principal gás do efeito estufa?";
 Q23.Resposta1 = "Dióxido de carbono"; // Resposta correta
 Q23.Resposta2 = "Metano";
@@ -390,7 +397,7 @@ ListaTodasQuestoes.Add(Q23);
 // Pergunta 24
 var Q24 = new Questao();
 Q24.Nivel = 3;
-Q24.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q24.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q24.Pergunta = "Qual é a unidade de medida da força no Sistema Internacional?";
 Q24.Resposta1 = "Joule";
 Q24.Resposta2 = "Newton"; // Resposta correta
@@ -403,7 +410,7 @@ ListaTodasQuestoes.Add(Q24);
 // Pergunta 25
 var Q25 = new Questao();
 Q25.Nivel = 3;
-Q25.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q25.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q25.Pergunta = "Qual é a capital da Islândia?";
 Q25.Resposta1 = "Reiquiavique"; // Resposta correta
 Q25.Resposta2 = "Oslo";
@@ -416,7 +423,7 @@ ListaTodasQuestoes.Add(Q25);
 // Pergunta 26
 var Q26 = new Questao();
 Q26.Nivel = 3;
-Q26.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q26.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q26.Pergunta = "Qual foi a primeira mulher a ganhar um Prêmio Nobel?";
 Q26.Resposta1 = "Marie Curie"; // Resposta correta
 Q26.Resposta2 = "Rosalind Franklin";
@@ -429,7 +436,7 @@ ListaTodasQuestoes.Add(Q26);
 // Pergunta 27
 var Q27 = new Questao();
 Q27.Nivel = 3;
-Q27.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q27.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q27.Pergunta = "Qual é a estrutura básica das proteínas?";
 Q27.Resposta1 = "Aminoácidos"; // Resposta correta
 Q27.Resposta2 = "Ácidos nucleicos";
@@ -442,7 +449,7 @@ ListaTodasQuestoes.Add(Q27);
 // Pergunta 28
 var Q28 = new Questao();
 Q28.Nivel = 3;
-Q28.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q28.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q28.Pergunta = "Qual é o maior deserto do mundo?";
 Q28.Resposta1 = "Sahara";
 Q28.Resposta2 = "Ártico"; // Resposta correta
@@ -455,7 +462,7 @@ ListaTodasQuestoes.Add(Q28);
 // Pergunta 29
 var Q29 = new Questao();
 Q29.Nivel = 3;
-Q29.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q29.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q29.Pergunta = "Qual é o principal componente do núcleo atômico?";
 Q29.Resposta1 = "Elétrons";
 Q29.Resposta2 = "Prótons"; // Resposta correta
@@ -468,7 +475,7 @@ ListaTodasQuestoes.Add(Q29);
 // Pergunta 30
 var Q30 = new Questao();
 Q30.Nivel = 3;
-Q30.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q30.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q30.Pergunta = "Qual é a obra mais famosa de William Shakespeare?";
 Q30.Resposta1 = "Hamlet"; // Resposta correta
 Q30.Resposta2 = "Romeu e Julieta";
@@ -481,7 +488,7 @@ ListaTodasQuestoes.Add(Q30);
 // Pergunta 31
 var Q31 = new Questao();
 Q31.Nivel = 4;
-Q31.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q31.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q31.Pergunta = "Qual é a fórmula da distância em movimento uniforme?";
 Q31.Resposta1 = "d = vt"; // Resposta correta
 Q31.Resposta2 = "d = v/t";
@@ -494,7 +501,7 @@ ListaTodasQuestoes.Add(Q31);
 // Pergunta 32
 var Q32 = new Questao();
 Q32.Nivel = 4;
-Q32.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q32.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q32.Pergunta = "Qual é o nome do efeito que altera a percepção do tempo em alta velocidade?";
 Q32.Resposta1 = "Efeito Doppler";
 Q32.Resposta2 = "Efeito Relatividade"; // Resposta correta
@@ -507,7 +514,7 @@ ListaTodasQuestoes.Add(Q32);
 // Pergunta 33
 var Q33 = new Questao();
 Q33.Nivel = 4;
-Q33.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q33.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q33.Pergunta = "Qual a função do fígado no corpo humano?";
 Q33.Resposta1 = "Filtrar o sangue"; // Resposta correta
 Q33.Resposta2 = "Produzir insulina";
@@ -520,7 +527,7 @@ ListaTodasQuestoes.Add(Q33);
 // Pergunta 34
 var Q34 = new Questao();
 Q34.Nivel = 4;
-Q34.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q34.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q34.Pergunta = "Quem propôs a teoria do Big Bang?";
 Q34.Resposta1 = "Stephen Hawking";
 Q34.Resposta2 = "Albert Einstein";
@@ -533,7 +540,7 @@ ListaTodasQuestoes.Add(Q34);
 // Pergunta 35
 var Q35 = new Questao();
 Q35.Nivel = 4;
-Q35.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q35.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q35.Pergunta = "Qual é a capital da Austrália?";
 Q35.Resposta1 = "Sydney";
 Q35.Resposta2 = "Canberra"; // Resposta correta
@@ -546,7 +553,7 @@ ListaTodasQuestoes.Add(Q35);
 // Pergunta 36
 var Q36 = new Questao();
 Q36.Nivel = 4;
-Q36.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q36.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q36.Pergunta = "Qual é a velocidade da luz no vácuo?";
 Q36.Resposta1 = "300.000 km/s"; // Resposta correta
 Q36.Resposta2 = "150.000 km/s";
@@ -559,7 +566,7 @@ ListaTodasQuestoes.Add(Q36);
 // Pergunta 37
 var Q37 = new Questao();
 Q37.Nivel = 4;
-Q37.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q37.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q37.Pergunta = "Qual é o principal neurotransmissor responsável pela sensação de prazer?";
 Q37.Resposta1 = "Serotonina";
 Q37.Resposta2 = "Dopamina"; // Resposta correta
@@ -572,7 +579,7 @@ ListaTodasQuestoes.Add(Q37);
 // Pergunta 38
 var Q38 = new Questao();
 Q38.Nivel = 4;
-Q38.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q38.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q38.Pergunta = "Qual é o planeta mais próximo do Sol?";
 Q38.Resposta1 = "Vênus";
 Q38.Resposta2 = "Terra";
@@ -585,7 +592,7 @@ ListaTodasQuestoes.Add(Q38);
 // Pergunta 39
 var Q39 = new Questao();
 Q39.Nivel = 4;
-Q39.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q39.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q39.Pergunta = "Qual é a principal fonte de energia da Terra?";
 Q39.Resposta1 = "Energia Geotérmica";
 Q39.Resposta2 = "Energia Solar"; // Resposta correta
@@ -599,7 +606,7 @@ ListaTodasQuestoes.Add(Q39);
 // Pergunta 40
 var Q40 = new Questao();
 Q40.Nivel = 5;
-Q40.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q40.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q40.Pergunta = "Qual é a principal característica da biologia celular?";
 Q40.Resposta1 = "Estudo da química dos seres vivos";
 Q40.Resposta2 = "Estudo das interações entre organismos";
@@ -612,7 +619,7 @@ ListaTodasQuestoes.Add(Q40);
 // Pergunta 41
 var Q41 = new Questao();
 Q41.Nivel = 5;
-Q41.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q41.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q41.Pergunta = "Qual é o nome do processo de transformação de uma larva em inseto adulto?";
 Q41.Resposta1 = "Metamorfose"; // Resposta correta
 Q41.Resposta2 = "Crescimento";
@@ -625,7 +632,7 @@ ListaTodasQuestoes.Add(Q41);
 // Pergunta 42
 var Q42 = new Questao();
 Q42.Nivel = 5;
-Q42.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q42.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q42.Pergunta = "Qual é o principal elemento da tabela periódica usado na construção de estruturas metálicas?";
 Q42.Resposta1 = "Cobre";
 Q42.Resposta2 = "Ferro"; // Resposta correta
@@ -638,7 +645,7 @@ ListaTodasQuestoes.Add(Q42);
 // Pergunta 43
 var Q43 = new Questao();
 Q43.Nivel = 5;
-Q43.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q43.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q43.Pergunta = "Quem é conhecido como o 'pai da psicanálise'?";
 Q43.Resposta1 = "Carl Jung";
 Q43.Resposta2 = "Sigmund Freud"; // Resposta correta
@@ -651,7 +658,7 @@ ListaTodasQuestoes.Add(Q43);
 // Pergunta 44
 var Q44 = new Questao();
 Q44.Nivel = 5;
-Q44.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q44.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q44.Pergunta = "Qual é a principal causa do aquecimento global?";
 Q44.Resposta1 = "Desmatamento";
 Q44.Resposta2 = "Poluição do ar"; // Resposta correta
@@ -664,7 +671,7 @@ ListaTodasQuestoes.Add(Q44);
 // Pergunta 45
 var Q45 = new Questao();
 Q45.Nivel = 5;
-Q45.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q45.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q45.Pergunta = "Qual é o nome da maior floresta tropical do mundo?";
 Q45.Resposta1 = "Floresta Amazônica"; // Resposta correta
 Q45.Resposta2 = "Floresta do Congo";
@@ -677,7 +684,7 @@ ListaTodasQuestoes.Add(Q45);
 // Pergunta 46
 var Q46 = new Questao();
 Q46.Nivel = 5;
-Q46.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q46.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q46.Pergunta = "Qual é o nome da camada da atmosfera onde ocorrem os fenômenos meteorológicos?";
 Q46.Resposta1 = "Estratosfera";
 Q46.Resposta2 = "Troposfera"; // Resposta correta
@@ -690,7 +697,7 @@ ListaTodasQuestoes.Add(Q46);
 // Pergunta 47
 var Q47 = new Questao();
 Q47.Nivel = 5;
-Q47.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q47.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q47.Pergunta = "Qual é a principal linguagem de programação para desenvolvimento web?";
 Q47.Resposta1 = "Java";
 Q47.Resposta2 = "C#";
@@ -703,7 +710,7 @@ ListaTodasQuestoes.Add(Q47);
 // Pergunta 48
 var Q48 = new Questao();
 Q48.Nivel = 5;
-Q48.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q48.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q48.Pergunta = "Qual é o nome do maior órgão do corpo humano?";
 Q48.Resposta1 = "Coração";
 Q48.Resposta2 = "Fígado";
@@ -716,7 +723,7 @@ ListaTodasQuestoes.Add(Q48);
 // Pergunta 49
 var Q49 = new Questao();
 Q49.Nivel = 6;
-Q49.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q49.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q49.Pergunta = "Qual é a unidade de medida da pressão no Sistema Internacional?";
 Q49.Resposta1 = "Pascal"; // Resposta correta
 Q49.Resposta2 = "Bar";
@@ -729,7 +736,7 @@ ListaTodasQuestoes.Add(Q49);
 // Pergunta 50
 var Q50 = new Questao();
 Q50.Nivel = 6;
-Q50.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q50.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q50.Pergunta = "Qual é o nome da teoria que descreve a origem do universo a partir de uma explosão?";
 Q50.Resposta1 = "Teoria do Big Bang"; // Resposta correta
 Q50.Resposta2 = "Teoria da Relatividade";
@@ -742,7 +749,7 @@ ListaTodasQuestoes.Add(Q50);
 // Pergunta 51
 var Q51 = new Questao();
 Q51.Nivel = 6;
-Q51.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q51.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q51.Pergunta = "Quem é conhecido como o pai da genética moderna?";
 Q51.Resposta1 = "Charles Darwin";
 Q51.Resposta2 = "Gregor Mendel"; // Resposta correta
@@ -755,7 +762,7 @@ ListaTodasQuestoes.Add(Q51);
 // Pergunta 52
 var Q52 = new Questao();
 Q52.Nivel = 6;
-Q52.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q52.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q52.Pergunta = "Qual é o nome da estrutura que controla as atividades da célula?";
 Q52.Resposta1 = "Membrana celular";
 Q52.Resposta2 = "Mitocôndria";
@@ -768,7 +775,7 @@ ListaTodasQuestoes.Add(Q52);
 // Pergunta 53
 var Q53 = new Questao();
 Q53.Nivel = 6;
-Q53.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q53.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q53.Pergunta = "Qual é o principal componente da atmosfera terrestre?";
 Q53.Resposta1 = "Oxigênio";
 Q53.Resposta2 = "Nitrogênio"; // Resposta correta
@@ -781,7 +788,7 @@ ListaTodasQuestoes.Add(Q53);
 // Pergunta 54
 var Q54 = new Questao();
 Q54.Nivel = 6;
-Q54.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q54.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q54.Pergunta = "Qual é a função das ribossomos?";
 Q54.Resposta1 = "Produzir energia";
 Q54.Resposta2 = "Síntese de proteínas"; // Resposta correta
@@ -794,7 +801,7 @@ ListaTodasQuestoes.Add(Q54);
 // Pergunta 55
 var Q55 = new Questao();
 Q55.Nivel = 6;
-Q55.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q55.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q55.Pergunta = "Qual é a unidade de medida da temperatura no Sistema Internacional?";
 Q55.Resposta1 = "Celsius";
 Q55.Resposta2 = "Fahrenheit";
@@ -807,7 +814,7 @@ ListaTodasQuestoes.Add(Q55);
 // Pergunta 56
 var Q56 = new Questao();
 Q56.Nivel = 6;
-Q56.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q56.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q56.Pergunta = "Qual é o nome do sistema que conecta os neurônios?";
 Q56.Resposta1 = "Sistema nervoso";
 Q56.Resposta2 = "Sistema linfático";
@@ -820,7 +827,7 @@ ListaTodasQuestoes.Add(Q56);
 // Pergunta 57
 var Q57 = new Questao();
 Q57.Nivel = 6;
-Q57.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q57.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q57.Pergunta = "Quem escreveu a obra 'O Capital'?";
 Q57.Resposta1 = "Karl Marx"; // Resposta correta
 Q57.Resposta2 = "Friedrich Engels";
@@ -833,7 +840,7 @@ ListaTodasQuestoes.Add(Q57);
 // Pergunta 58
 var Q58 = new Questao();
 Q58.Nivel = 7;
-Q58.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q58.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q58.Pergunta = "Qual é o nome da teoria que explica a natureza quântica da luz?";
 Q58.Resposta1 = "Teoria da Relatividade";
 Q58.Resposta2 = "Teoria Quântica"; // Resposta correta
@@ -846,7 +853,7 @@ ListaTodasQuestoes.Add(Q58);
 // Pergunta 59
 var Q59 = new Questao();
 Q59.Nivel = 7;
-Q59.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q59.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q59.Pergunta = "Qual a função do aparelho respiratório?";
 Q59.Resposta1 = "Transportar oxigênio"; // Resposta correta
 Q59.Resposta2 = "Produzir hormônios";
@@ -859,7 +866,7 @@ ListaTodasQuestoes.Add(Q59);
 // Pergunta 60
 var Q60 = new Questao();
 Q60.Nivel = 7;
-Q60.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q60.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q60.Pergunta = "Qual é a estrutura responsável pela troca gasosa nos pulmões?";
 Q60.Resposta1 = "Brônquios";
 Q60.Resposta2 = "Alvéolos"; // Resposta correta
@@ -872,7 +879,7 @@ ListaTodasQuestoes.Add(Q60);
 // Pergunta 61
 var Q61 = new Questao();
 Q61.Nivel = 7;
-Q61.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q61.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q61.Pergunta = "Qual é a unidade de medida da carga elétrica?";
 Q61.Resposta1 = "Volt";
 Q61.Resposta2 = "Ampere"; // Resposta correta
@@ -885,7 +892,7 @@ ListaTodasQuestoes.Add(Q61);
 // Pergunta 62
 var Q62 = new Questao();
 Q62.Nivel = 7;
-Q62.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q62.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q62.Pergunta = "Qual é o nome do processo pelo qual as plantas produzem energia?";
 Q62.Resposta1 = "Respiração";
 Q62.Resposta2 = "Fermentação";
@@ -898,7 +905,7 @@ ListaTodasQuestoes.Add(Q62);
 // Pergunta 63
 var Q63 = new Questao();
 Q63.Nivel = 7;
-Q63.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q63.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q63.Pergunta = "Quem foi o primeiro homem a viajar ao espaço?";
 Q63.Resposta1 = "Yuri Gagarin"; // Resposta correta
 Q63.Resposta2 = "Neil Armstrong";
@@ -911,7 +918,7 @@ ListaTodasQuestoes.Add(Q63);
 // Pergunta 64
 var Q64 = new Questao();
 Q64.Nivel = 7;
-Q64.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q64.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q64.Pergunta = "Qual é o maior animal do planeta?";
 Q64.Resposta1 = "Elefante";
 Q64.Resposta2 = "Baleia Azul"; // Resposta correta
@@ -924,7 +931,7 @@ ListaTodasQuestoes.Add(Q64);
 // Pergunta 65
 var Q65 = new Questao();
 Q65.Nivel = 7;
-Q65.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q65.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q65.Pergunta = "Qual é a capital da Rússia?";
 Q65.Resposta1 = "Moscovo"; // Resposta correta
 Q65.Resposta2 = "São Petersburgo";
@@ -937,7 +944,7 @@ ListaTodasQuestoes.Add(Q65);
 // Pergunta 66
 var Q66 = new Questao();
 Q66.Nivel = 8;
-Q66.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q66.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q66.Pergunta = "Qual é o principal gás responsável pelo efeito estufa?";
 Q66.Resposta1 = "Dióxido de carbono"; // Resposta correta
 Q66.Resposta2 = "Metano";
@@ -950,7 +957,7 @@ ListaTodasQuestoes.Add(Q66);
 // Pergunta 67
 var Q67 = new Questao();
 Q67.Nivel = 8;
-Q67.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q67.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q67.Pergunta = "Qual é o nome da teoria que afirma que a Terra é o centro do universo?";
 Q67.Resposta1 = "Teoria Geocêntrica"; // Resposta correta
 Q67.Resposta2 = "Teoria Heliocêntrica";
@@ -963,7 +970,7 @@ ListaTodasQuestoes.Add(Q67);
 // Pergunta 68
 var Q68 = new Questao();
 Q68.Nivel = 8;
-Q68.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q68.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q68.Pergunta = "Qual é a fórmula química da água?";
 Q68.Resposta1 = "H2O"; // Resposta correta
 Q68.Resposta2 = "CO2";
@@ -976,7 +983,7 @@ ListaTodasQuestoes.Add(Q68);
 // Pergunta 69
 var Q69 = new Questao();
 Q69.Nivel = 8;
-Q69.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q69.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q69.Pergunta = "Qual é a maior floresta tropical do mundo?";
 Q69.Resposta1 = "Floresta Amazônica"; // Resposta correta
 Q69.Resposta2 = "Floresta do Congo";
@@ -989,7 +996,7 @@ ListaTodasQuestoes.Add(Q69);
 // Pergunta 70
 var Q70 = new Questao();
 Q70.Nivel = 8;
-Q70.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q70.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q70.Pergunta = "Qual é o elemento químico com o símbolo Au?";
 Q70.Resposta1 = "Prata";
 Q70.Resposta2 = "Ouro"; // Resposta correta
@@ -1002,7 +1009,7 @@ ListaTodasQuestoes.Add(Q70);
 // Pergunta 72
 var Q72 = new Questao();
 Q72.Nivel = 8;
-Q72.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q72.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q72.Pergunta = "Qual é o maior planeta do Sistema Solar?";
 Q72.Resposta1 = "Terra";
 Q72.Resposta2 = "Júpiter"; // Resposta correta
@@ -1015,7 +1022,7 @@ ListaTodasQuestoes.Add(Q72);
 // Pergunta 73
 var Q73 = new Questao();
 Q73.Nivel = 8;
-Q73.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q73.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q73.Pergunta = "Qual é a capital da França?";
 Q73.Resposta1 = "Berlim";
 Q73.Resposta2 = "Madrid";
@@ -1028,7 +1035,7 @@ ListaTodasQuestoes.Add(Q73);
 // Pergunta 74
 var Q74 = new Questao();
 Q74.Nivel = 8;
-Q74.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q74.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q74.Pergunta = "Qual é a moeda oficial do Japão?";
 Q74.Resposta1 = "Yuan";
 Q74.Resposta2 = "Won";
@@ -1041,7 +1048,7 @@ ListaTodasQuestoes.Add(Q74);
 // Pergunta 75
 var Q75 = new Questao();
 Q75.Nivel = 8;
-Q75.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q75.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q75.Pergunta = "Qual é o gás mais abundante na atmosfera terrestre?";
 Q75.Resposta1 = "Oxigênio";
 Q75.Resposta2 = "Dióxido de carbono";
@@ -1054,7 +1061,7 @@ ListaTodasQuestoes.Add(Q75);
 // Pergunta 76
 var Q76 = new Questao();
 Q76.Nivel = 8;
-Q76.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q76.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q76.Pergunta = "Qual é o elemento químico com o símbolo Fe?";
 Q76.Resposta1 = "Ferro"; // Resposta correta
 Q76.Resposta2 = "Fluor";
@@ -1067,7 +1074,7 @@ ListaTodasQuestoes.Add(Q76);
 // Pergunta 77
 var Q77 = new Questao();
 Q77.Nivel = 8;
-Q77.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q77.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q77.Pergunta = "Qual é o nome do continente onde se encontra o Egito?";
 Q77.Resposta1 = "África"; // Resposta correta
 Q77.Resposta2 = "Ásia";
@@ -1080,7 +1087,7 @@ ListaTodasQuestoes.Add(Q77);
 // Pergunta 78
 var Q78 = new Questao();
 Q78.Nivel = 8;
-Q78.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q78.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q78.Pergunta = "Qual é o rio mais longo do mundo?";
 Q78.Resposta1 = "Rio Nilo"; // Resposta correta
 Q78.Resposta2 = "Rio Amazonas";
@@ -1093,7 +1100,7 @@ ListaTodasQuestoes.Add(Q78);
 // Pergunta 79
 var Q79 = new Questao();
 Q79.Nivel = 8;
-Q79.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q79.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q79.Pergunta = "Qual é a capital do Brasil?";
 Q79.Resposta1 = "Rio de Janeiro";
 Q79.Resposta2 = "São Paulo";
@@ -1106,7 +1113,7 @@ ListaTodasQuestoes.Add(Q79);
 // Pergunta 80
 var Q80 = new Questao();
 Q80.Nivel = 8;
-Q80.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q80.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q80.Pergunta = "Qual é a fórmula da glicose?";
 Q80.Resposta1 = "C6H12O6"; // Resposta correta
 Q80.Resposta2 = "H2O";
@@ -1119,7 +1126,7 @@ ListaTodasQuestoes.Add(Q80);
 // Pergunta 81
 var Q81 = new Questao();
 Q81.Nivel = 9;
-Q81.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q81.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q81.Pergunta = "Qual é o nome da primeira mulher a ganhar um Prêmio Nobel?";
 Q81.Resposta1 = "Marie Curie"; // Resposta correta
 Q81.Resposta2 = "Rosalind Franklin";
@@ -1132,7 +1139,7 @@ ListaTodasQuestoes.Add(Q81);
 // Pergunta 82
 var Q82 = new Questao();
 Q82.Nivel = 9;
-Q82.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q82.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q82.Pergunta = "Qual é a teoria que explica a evolução das espécies?";
 Q82.Resposta1 = "Teoria da Evolução"; // Resposta correta
 Q82.Resposta2 = "Teoria da Relatividade";
@@ -1145,7 +1152,7 @@ ListaTodasQuestoes.Add(Q82);
 // Pergunta 83
 var Q83 = new Questao();
 Q83.Nivel = 9;
-Q83.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q83.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q83.Pergunta = "Qual é o maior deserto do mundo?";
 Q83.Resposta1 = "Deserto do Saara";
 Q83.Resposta2 = "Deserto da Antártica"; // Resposta correta
@@ -1158,7 +1165,7 @@ ListaTodasQuestoes.Add(Q83);
 // Pergunta 84
 var Q84 = new Questao();
 Q84.Nivel = 9;
-Q84.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q84.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q84.Pergunta = "Qual é o maior órgão do corpo humano?";
 Q84.Resposta1 = "Coração";
 Q84.Resposta2 = "Fígado";
@@ -1171,7 +1178,7 @@ ListaTodasQuestoes.Add(Q84);
 // Pergunta 85
 var Q85 = new Questao();
 Q85.Nivel = 9;
-Q85.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q85.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q85.Pergunta = "Qual é a fórmula da água?";
 Q85.Resposta1 = "H2O"; // Resposta correta
 Q85.Resposta2 = "CO2";
@@ -1179,7 +1186,7 @@ Q85.Resposta3 = "O2";
 
 var Q86 = new Questao();
 Q86.Nivel = 9;
-Q86.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q86.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q86.Pergunta = "Quem pintou a Mona Lisa?";
 Q86.Resposta1 = "Vincent van Gogh";
 Q86.Resposta2 = "Pablo Picasso";
@@ -1192,7 +1199,7 @@ ListaTodasQuestoes.Add(Q86);
 // Pergunta 87
 var Q87 = new Questao();
 Q87.Nivel = 9;
-Q87.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q87.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q87.Pergunta = "Qual é a capital da Austrália?";
 Q87.Resposta1 = "Sydney";
 Q87.Resposta2 = "Canberra"; // Resposta correta
@@ -1205,7 +1212,7 @@ ListaTodasQuestoes.Add(Q87);
 // Pergunta 88
 var Q88 = new Questao();
 Q88.Nivel = 9;
-Q88.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q88.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q88.Pergunta = "Qual é a maior cadeia de montanhas do mundo?";
 Q88.Resposta1 = "Cordilheira dos Andes"; // Resposta correta
 Q88.Resposta2 = "Himalaias";
@@ -1218,7 +1225,7 @@ ListaTodasQuestoes.Add(Q88);
 // Pergunta 89
 var Q89 = new Questao();
 Q89.Nivel = 9;
-Q89.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q89.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q89.Pergunta = "Quem foi o autor de 'Dom Casmurro'?";
 Q89.Resposta1 = "Jorge Amado";
 Q89.Resposta2 = "Machado de Assis"; // Resposta correta
@@ -1231,7 +1238,7 @@ ListaTodasQuestoes.Add(Q89);
 // Pergunta 90
 var Q90 = new Questao();
 Q90.Nivel = 9;
-Q90.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q90.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q90.Pergunta = "Qual é a camada mais externa da Terra?";
 Q90.Resposta1 = "Manto";
 Q90.Resposta2 = "Núcleo";
@@ -1245,7 +1252,7 @@ ListaTodasQuestoes.Add(Q90);
 // Pergunta 91
 var Q91 = new Questao();
 Q91.Nivel = 10;
-Q91.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q91.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q91.Pergunta = "Qual é a velocidade da luz?";
 Q91.Resposta1 = "300.000 km/s"; // Resposta correta
 Q91.Resposta2 = "150.000 km/s";
@@ -1258,7 +1265,7 @@ ListaTodasQuestoes.Add(Q91);
 // Pergunta 92
 var Q92 = new Questao();
 Q92.Nivel = 10;
-Q92.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q92.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q92.Pergunta = "Qual é a equação famosa de Einstein sobre a energia?";
 Q92.Resposta1 = "E=mc²"; // Resposta correta
 Q92.Resposta2 = "F=ma";
@@ -1271,7 +1278,7 @@ ListaTodasQuestoes.Add(Q92);
 // Pergunta 93
 var Q93 = new Questao();
 Q93.Nivel = 10;
-Q93.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q93.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q93.Pergunta = "Qual é a partícula subatômica com carga negativa?";
 Q93.Resposta1 = "Próton";
 Q93.Resposta2 = "Nêutron";
@@ -1284,7 +1291,7 @@ ListaTodasQuestoes.Add(Q93);
 // Pergunta 94
 var Q94 = new Questao();
 Q94.Nivel = 10;
-Q94.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q94.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q94.Pergunta = "Qual é a teoria que descreve a origem do universo?";
 Q94.Resposta1 = "Teoria do Big Bang"; // Resposta correta
 Q94.Resposta2 = "Teoria da Evolução";
@@ -1297,7 +1304,7 @@ ListaTodasQuestoes.Add(Q94);
 // Pergunta 95
 var Q95 = new Questao();
 Q95.Nivel = 10;
-Q95.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q95.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q95.Pergunta = "Qual é a estrutura responsável pelo controle das funções do corpo?";
 Q95.Resposta1 = "Cérebro"; // Resposta correta
 Q95.Resposta2 = "Coração";
@@ -1310,7 +1317,7 @@ ListaTodasQuestoes.Add(Q95);
 // Pergunta 96
 var Q96 = new Questao();
 Q96.Nivel = 10;
-Q96.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q96.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q96.Pergunta = "Qual é o conceito de entropia na termodinâmica?";
 Q96.Resposta1 = "Medida da desordem"; // Resposta correta
 Q96.Resposta2 = "Energia potencial";
@@ -1323,7 +1330,7 @@ ListaTodasQuestoes.Add(Q96);
 // Pergunta 97
 var Q97 = new Questao();
 Q97.Nivel = 10;
-Q97.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q97.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q97.Pergunta = "Qual é a maior estrutura viva do planeta?";
 Q97.Resposta1 = "Coração de uma baleia";
 Q97.Resposta2 = "A Grande Barreira de Coral"; // Resposta correta
@@ -1336,7 +1343,7 @@ ListaTodasQuestoes.Add(Q97);
 // Pergunta 98
 var Q98 = new Questao();
 Q98.Nivel = 10;
-Q98.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q98.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q98.Pergunta = "Qual é a fórmula da velocidade média?";
 Q98.Resposta1 = "Distância/Tempo"; // Resposta correta
 Q98.Resposta2 = "Tempo/Distância";
@@ -1348,7 +1355,7 @@ ListaTodasQuestoes.Add(Q98);
 
 var Q100 = new Questao();
 Q100.Nivel = 10;
-Q100.Estruturadedesenho(LabelPerg, btnResp01, btnResp02, btnResp03, btnResp04, btnResp05);
+Q100.Estruturadedesenho(LabelPerg, btnresposta01, btnresposta02, btnresposta03, btnresposta04, btnresposta05);
 Q100.Pergunta = "Qual é o elemento químico mais abundante no universo?";
 Q100.Resposta1 = "Hidrogênio"; // Resposta correta
 Q100.Resposta2 = "Hélio";
