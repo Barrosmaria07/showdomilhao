@@ -48,8 +48,8 @@
                 Grid.Row="0"
                 Grid.Column="12" />
 
-              <Button x:Name="btResposta01"
-                    Clicked="OnBtnResposta01Clicked"
+              <Button x:Name="btnResposta01"
+                    Clicked="OnbtnResposta01Clicked"
                     Grid.Row="3"
                     Margin="5,5,5,5"
                     Grid.ColumnSpan="3"
@@ -60,8 +60,8 @@
                     TextColor="White"
                     FontSize="19"/>
 
-                    <Button x:Name="btResposta02"
-                    Clicked="OnBtnResposta02Clicked"
+                    <Button x:Name="btnResposta02"
+                    Clicked="OnbtnResposta02Clicked"
                     Margin="5,5,5,5"
                     Grid.ColumnSpan="3"
                     Grid.Row="4"
@@ -72,8 +72,8 @@
                     TextColor="White"
                     FontSize="19"/>
 
-                    <Button x:Name="btResposta03"
-                    Clicked="OnBtnResposta03Clicked"
+                    <Button x:Name="btnResposta03"
+                    Clicked="OnbtnResposta03Clicked"
                     Margin="5,5,5,5"
                     Grid.ColumnSpan="3"
                     Grid.Row="5"
@@ -84,8 +84,8 @@
                     TextColor="White"
                  
                     FontSize="19"/>
-                   <Button x:Name="btResposta04"
-                   Clicked="OnBtnResposta04Clicked"
+                   <Button x:Name="btnResposta04"
+                   Clicked="OnbtnResposta04Clicked"
                      Grid.ColumnSpan="3"
                     Grid.Row="6"
                     BorderColor="White"
@@ -96,8 +96,8 @@
                     TextColor="White"
                     FontSize="19"/>
 
-                <Button x:Name="btResposta05"
-                Clicked="OnBtnResposta05Clicked"
+                <Button x:Name="btnResposta05"
+                Clicked="OnbtnResposta05Clicked"
                     Grid.ColumnSpan="3"
                     Grid.Row="7"
                     BorderColor="White"
@@ -127,6 +127,7 @@
                     BorderWidth="1"
                     Margin="5,5,5,5"
                     CornerRadius="20"
+                    Clicked="OnAjudaRetirarClicked"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
 
@@ -141,6 +142,7 @@
                     Margin="5,5,5,5"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
+                    Clicked="OnbtnResposta04Clicked"
                     FontSize="15"/>
 
                     

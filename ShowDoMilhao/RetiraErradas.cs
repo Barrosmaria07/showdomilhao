@@ -3,7 +3,7 @@ public class RetiraErradas:IAjuda
 {
     public override void RealizaAjuda(Questao questao)
     {
-        switch (questao.RespostaCorreta)
+        switch (questao.RespostaCerta)
         {
             case 1:
             btnResposta02.IsVisible=false;
