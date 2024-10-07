@@ -52,7 +52,23 @@ public partial class Jogopage : ContentPage
     gerenciador.ProximaQuestao();
     (sender as Button).IsVisible=false;
   }
+  void OnPularClicked (object sender, EventArgs a)
+  {
+    gerenciador.ProximaQuestao();
+    if
+    {
+      OnPularClicked int i<4;
+    }
+    (sender as Button).IsVisible = false;
+    
+      else
+      {
+        (sender as Button).IsVisible = true;
+      }
+    }
+
+  }
 
 
-}
+
 

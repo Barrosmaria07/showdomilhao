@@ -108,7 +108,7 @@
                     TextColor="White"
                     FontSize="19"/>
 
-                     <Button Text="Cartas"
+                     <Button Text=" Retirar Cartas"
                     Grid.Row="8"
                     Grid.Column="0"
                     BorderColor="White"
@@ -133,7 +133,8 @@
 
                     FontSize="15"/>
                     
-                     <Button Text="Ajuda"
+                     <Button Text="Pular"
+                    Clicked="OnPularClicked"
                     Grid.Row="8"
                     Grid.Column="2"
                     BorderColor="White"
@@ -142,7 +143,6 @@
                     Margin="5,5,5,5"
                     BackgroundColor="#9feb98"
                     TextColor="Black"
-                    Clicked="OnbtnResposta04Clicked"
                     FontSize="15"/>
 
                     
