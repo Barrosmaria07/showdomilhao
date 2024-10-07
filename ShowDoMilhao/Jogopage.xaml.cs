@@ -6,8 +6,9 @@ public partial class Jogopage : ContentPage
 {
 
 	Gerenciador gerenciador;
-
+int pulou=1;
 	public Jogopage()
+  
 	{
 		InitializeComponent();
     	gerenciador = new Gerenciador(labelPergunta, btnResposta01, btnResposta02, btnResposta03, btnResposta04, btnResposta05, labelPontuacao,labelNivel);
@@ -47,26 +48,17 @@ public partial class Jogopage : ContentPage
     }
 	
 
-  void OnAjudaPulaClicked(object sender, EventArgs e) 
+  void OnPularClicked(object sender, EventArgs e) 
   {
-    gerenciador.ProximaQuestao();
+    if (pulou==3)
     (sender as Button).IsVisible=false;
-  }
-  void OnPularClicked (object sender, EventArgs a)
-  {
-    gerenciador.ProximaQuestao();
-    if
+    else
     {
-      OnPularClicked int i<4;
+      gerenciador.ProximaQuestao();
+      pulou++;
     }
-    (sender as Button).IsVisible = false;
+  }
     
-      else
-      {
-        (sender as Button).IsVisible = true;
-      }
-    }
-
   }
 
 
